@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 // Template
-import { AppComponent } from './templates/main2022/main/app.component';
+import { AppComponent } from './templates/main2022/components/main/app.component';
 
 // Modules
 import { MainModule } from './templates/main2022/main.module';

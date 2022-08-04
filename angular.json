@@ -34,6 +34,10 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/tippy.js/dist/tippy.css",
+              "./node_modules/tippy.js/dist/svg-arrow.css",
+              "./node_modules/tippy.js/animations/shift-away.css",
+              "./node_modules/animate.css/animate.compat.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -102,6 +106,10 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/tippy.js/dist/tippy.css",
+              "./node_modules/tippy.js/dist/svg-arrow.css",
+              "./node_modules/tippy.js/animations/shift-away.css",
+              "./node_modules/animate.css/animate.compat.css",
               "src/styles.scss"
             ],
             "scripts": []
