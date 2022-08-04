@@ -11,13 +11,21 @@ import { AppRoutingModule } from './app-routing.module';
 // Template
 import { AppComponent } from './templates/main2022/main/app.component';
 
+// Modules
+import { MainModule } from './templates/main2022/main.module';
+
 // Components
-import { MenuComponent } from './templates/main2022/menu/menu.component';
-import { HeaderComponent } from './templates/main2022/header/header.component';
+
+// Pages
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MenuComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    MainModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
