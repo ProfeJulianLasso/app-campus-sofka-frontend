@@ -20,6 +20,8 @@ import { SecurityModule } from './modules/security/security.module';
 
 // Pages
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
 @NgModule({
   declarations: [AppComponent, IndexComponent],
   imports: [
@@ -28,6 +30,7 @@ import { SecurityModule } from './modules/security/security.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SecurityModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
 
   ],
   providers: [],

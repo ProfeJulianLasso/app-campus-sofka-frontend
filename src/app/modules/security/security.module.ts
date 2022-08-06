@@ -23,13 +23,15 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignUpComponent,
     SignInComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,

@@ -10,10 +10,6 @@ import { IndexComponent } from './pages/index/index.component';
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent
-  },
-  {
-    path: 'security',
     loadChildren: () =>
       import('./modules/security/security.module').then((m) => m.SecurityModule)
   },
@@ -33,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
