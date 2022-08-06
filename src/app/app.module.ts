@@ -13,18 +13,21 @@ import { AppComponent } from './templates/main2022/components/main/app.component
 
 // Modules
 import { MainModule } from './templates/main2022/main.module';
+import { IndexComponent } from './pages/index/index.component';
+import { SecurityModule } from './modules/security/security.module';
 
 // Components
 
 // Pages
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, IndexComponent],
   imports: [
     BrowserModule,
     MainModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SecurityModule
   ],
   providers: [],
   bootstrap: [AppComponent]
