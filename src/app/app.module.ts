@@ -27,9 +27,10 @@ import { SecurityModule } from './modules/security/security.module';
     MainModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SecurityModule
+    SecurityModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

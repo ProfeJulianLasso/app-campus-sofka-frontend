@@ -10,7 +10,7 @@ export class LoginModalComponent {
   btnCancelar: boolean;
 
   constructor(private menu$: MenuService) {
-    this.btnCancelar = true;
+    this.btnCancelar = false;
   }
 
   change(): void {

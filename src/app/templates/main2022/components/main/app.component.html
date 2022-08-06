@@ -1,5 +1,8 @@
 <div class="first-container">
-  <div [class.mat-elevation-z2]="true" [ngClass]="{'HolaCSS1': menuFlag, 'HolaCSS2': !menuFlag}">
+  <div
+    [class.mat-elevation-z2]="false"
+    [ngClass]="{ HolaCSS1: menuFlag, HolaCSS2: !menuFlag }"
+  >
     <sofka-menu></sofka-menu>
   </div>
   <div class="second-container">
