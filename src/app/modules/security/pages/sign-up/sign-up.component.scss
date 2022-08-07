@@ -1,6 +1,6 @@
 .form-register {
   width: 400px;
-  height: 400px;
+  height: 470px;
   padding: 30px;
   background-color: white;
   -webkit-box-shadow: 10px -5px 55px -12px rgba(171, 171, 171, 1);
@@ -10,4 +10,7 @@
 }
 .inputs {
   margin-top: 5px;
+  .matInput {
+    width: 300px;
+  }
 }

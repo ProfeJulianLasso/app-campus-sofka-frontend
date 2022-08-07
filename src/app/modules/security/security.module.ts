@@ -6,6 +6,9 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 // Routing
 import { SecurityRoutingModule } from './security-routing.module';
@@ -25,9 +28,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input'
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -46,7 +47,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
 
   ],
   exports: [LoginModalComponent]
