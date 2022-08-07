@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { User } from '../interfaces/IUser';
 
@@ -10,7 +11,8 @@ import { User } from '../interfaces/IUser';
 export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
-    public afs: AngularFirestore
+    public afs: AngularFirestore,
+    public router: Router
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -47,18 +49,18 @@ export class AuthService {
    * @param password
    */
 
-  async SignIn(email: string, password: string) {
-    try {
-      await this.afAuth
-        .signInWithEmailAndPassword(email, password);
-
-    } catch (error) {
-
-    }
+  SignIn(email: string, password: string) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log(result);
+        
+        this.router.navigate(['']);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-
-
-
 
   /**
    * Metodo para realizar el registro de usuario
@@ -132,4 +134,19 @@ export class AuthService {
   //     })
   //   )
   // }
+
+  // SetUserData(user: any) {
+  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+  //     `users/${user.uid}`
+  //   );
+  //   const userData: User = {
+  //     uid: user.uid,
+  //     email: user.email,
+  //     displayName: user.displayName
+  //   };
+  //   return userRef.set(userData, {
+  //     merge: true,
+  //   });
+  // }
+
 }
