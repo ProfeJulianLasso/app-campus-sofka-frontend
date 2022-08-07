@@ -27,15 +27,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     LoginComponent,
     SignUpComponent,
     SignInComponent,
     LoginModalComponent,
-    AuthComponent
+    AuthComponent,
+    PasswordRecoveryComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-
   ],
   exports: [LoginModalComponent]
 })
