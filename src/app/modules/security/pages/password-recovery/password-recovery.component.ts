@@ -11,15 +11,16 @@ import { FirebaseCodeErrorService } from '../../services/firebase-code-error.ser
 })
 export class PasswordRecoveryComponent {
   recoveryUser: FormGroup;
+  hide: boolean;
   loading = false;
 
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
-   
     private router: Router,
     private firebaseError: FirebaseCodeErrorService
   ) {
+    this.hide = true;
     this.recoveryUser = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -37,5 +38,9 @@ export class PasswordRecoveryComponent {
         this.loading = false;
         this.firebaseError.codeError(error.code), 'Error';
       });
+  }
+
+  fieldValidator(fiel: string) {
+    return this.recoveryUser.controls?.[fiel].errors && this.recoveryUser.controls?.[fiel].touched
   }
 }
