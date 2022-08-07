@@ -30,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { PasswordComponent } from './pages/password/password.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatIconModule } from '@angular/material/icon';
     SignInComponent,
     LoginModalComponent,
     AuthComponent,
-    PasswordRecoveryComponent
+    PasswordRecoveryComponent,
+    PasswordComponent
   ],
   imports: [
     CommonModule,
