@@ -5,11 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 // Guards
 
 // Pages
-import { IndexComponent } from './pages/index/index.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () =>
       import('./modules/security/security.module').then((m) => m.SecurityModule)
   },
