@@ -24,6 +24,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthComponent } from './pages/auth/auth.component';
     SignUpComponent,
     SignInComponent,
     LoginModalComponent,
-    AuthComponent
+    AuthComponent,
+    PasswordRecoveryComponent
   ],
   imports: [
     CommonModule,
