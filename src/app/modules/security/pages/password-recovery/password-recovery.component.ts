@@ -41,6 +41,9 @@ export class PasswordRecoveryComponent {
   }
 
   fieldValidator(fiel: string) {
-    return this.recoveryUser.controls?.[fiel].errors && this.recoveryUser.controls?.[fiel].touched
+    return (
+      this.recoveryUser.controls?.[fiel].errors &&
+      this.recoveryUser.controls?.[fiel].touched
+    );
   }
 }
