@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { FirebaseCodeErrorService } from '../../services/firebase-code-error.service';
 @Component({
@@ -12,13 +13,13 @@ import { FirebaseCodeErrorService } from '../../services/firebase-code-error.ser
 export class PasswordRecoveryComponent {
   recoveryUser: FormGroup;
   hide: boolean;
-  loading = false;
 
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
-    private firebaseError: FirebaseCodeErrorService
+    private firebaseError: FirebaseCodeErrorService,
+    private toastr: ToastrService
   ) {
     this.hide = true;
     this.recoveryUser = this.fb.group({
@@ -28,18 +29,9 @@ export class PasswordRecoveryComponent {
 
   /**
    * [
-   *  contiene el metodo recovery() donde poderes recuperar la contraseña
-   *  toma el input email enviado en el boton recuperar dentra a 
-   *   .then(() => {
-        this.router.navigate(['/login']);
-        })
-   *  si todo es exitoso manda el correo donde podemos recuperar la contraseña 
-   *     
-   *     .catch((error) => {
-        this.loading = false;
-        this.firebaseError.codeError(error.code), 'Error';
-      });  
-   *  si hay un error            
+   *  Metodo recovery(), donde se puede recuperar la contraseña,
+   *  se recupera el valor del email enviado const email y se realizan las
+   *  validaciones corespondientes.
    * ]
    * @version [1,0.0]
    *
@@ -49,15 +41,15 @@ export class PasswordRecoveryComponent {
    */
   recovery() {
     const email = this.recoveryUser.value.email;
-    this.loading = true;
+
     this.afAuth
       .sendPasswordResetEmail(email)
       .then(() => {
         this.router.navigate(['/login']);
       })
       .catch((error) => {
-        this.loading = false;
         this.firebaseError.codeError(error.code), 'Error';
+        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       });
   }
 }
