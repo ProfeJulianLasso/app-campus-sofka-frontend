@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DashboardService {
-  url = '/api/course/';
+  url = '/api/courses/';
   constructor(private http: HttpClient) {}
 
   getCourses(): Observable<any> {
