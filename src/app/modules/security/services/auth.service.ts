@@ -53,8 +53,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         if (this.verificacionEmail(result)) {
-          alert("prueba")
-          this.router.navigate(['']);
+          this.router.navigate(['/dashboard']);
         }
       })
 

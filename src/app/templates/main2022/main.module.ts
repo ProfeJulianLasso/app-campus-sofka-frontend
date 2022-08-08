@@ -13,9 +13,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 // Components
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [HeaderComponent, MenuComponent],
+  declarations: [HeaderComponent, MenuComponent, DashboardComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -28,6 +29,6 @@ import { HeaderComponent } from './components/header/header.component';
     FormsModule
   ],
   providers: [],
-  exports: [HeaderComponent, MenuComponent]
+  exports: [HeaderComponent, MenuComponent, DashboardComponent]
 })
 export class MainModule { }

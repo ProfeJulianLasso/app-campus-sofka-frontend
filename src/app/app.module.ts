@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ToastrModule } from 'ngx-toastr';
 // Material
 
 // Routing
@@ -23,13 +23,14 @@ import { SecurityModule } from './modules/security/security.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 @NgModule({
-  declarations: [AppComponent, IndexComponent],
+  declarations: [AppComponent, IndexComponent, ],
   imports: [
     BrowserModule,
     MainModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SecurityModule,
+    ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig)
 
   ],
