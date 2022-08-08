@@ -7,7 +7,7 @@ import { Course } from '../../../security/interfaces/ICourse';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
-  listCourse: Course[] = [];
+  listCourses: Course[] = [];
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -18,8 +18,8 @@ export class CourseComponent implements OnInit {
   courseAll() {
     this.dashboardService.getCourses().subscribe(
       (data) => {
-        this.listCourse = data;
-        console.log(this.listCourse);
+        this.listCourses = data;
+        console.log(this.listCourses);
       },
       (error) => {
         console.log(error);
