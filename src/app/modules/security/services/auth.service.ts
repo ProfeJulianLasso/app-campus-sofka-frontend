@@ -4,6 +4,9 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { User } from '../interfaces/IUser';
+import { ToastrService } from 'ngx-toastr';
+import { FirebaseCodeErrorService } from './firebase-code-error.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +14,8 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
+    private toastr: ToastrService,
+    private firebaseError: FirebaseCodeErrorService,
     public router: Router
   ) {
     this.afAuth.authState.subscribe((user) => {
@@ -117,6 +122,33 @@ export class AuthService {
     });
   }
 
+    /**
+   * [
+   *  Metodo recovery(), donde se puede recuperar la contraseña,
+   *  se recupera el valor del email enviado const email y se realizan las
+   *  validaciones corespondientes.
+   * ]
+   * @version [1,0.0]
+   *
+   * @author [Yeferson Valencia, alejandro.yandd@gmail.com]
+   * @since [1,0,0]
+   *
+   */
+  recovery(email: string) {
+    this.afAuth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        this.router.navigate(['/login']);
+        this.toastr.info(
+          'Le enviamos un correo para restablecer su password',
+          'Recuperar Password'
+        );
+      })
+      .catch((error) => {
+        this.firebaseError.codeError(error.code), 'Error';
+        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+      });
+  }
 
   /**
    * metodo que retonar el usuario logeado

@@ -47,6 +47,8 @@ export class SignUpComponent implements OnInit {
   }
 
   registerAcoount(name: string, email: string, password: string, confirm: string) {
-    this.authService.SignUp(name, email, password).then(res => this.singUp.reset())
+    this.authService
+      .SignUp(name, email, password)
+      .then((res) => this.singUp.reset());
   }
 }
