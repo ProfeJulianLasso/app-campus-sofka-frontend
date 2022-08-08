@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { User } from '../interfaces/IUser';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
-    public afs: AngularFirestore
+    public afs: AngularFirestore,
+    public router: Router
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -42,24 +43,34 @@ export class AuthService {
 
 
   /**
-   * metodo para iniciar sesion en la app
-   * @param email
-   * @param password
-   */
+  * metodo para iniciar sesion en la app
+  * @param email
+  * @param password
+  */
 
-  async SignIn(email: string, password: string) {
-    try {
-      await this.afAuth
-        .signInWithEmailAndPassword(email, password);
+  SignIn(email: string, password: string) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        if (this.verificacionEmail(result)) {
+          alert("prueba")
+          this.router.navigate(['']);
+        }
+      })
 
-    } catch (error) {
-
-    }
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
 
 
-
+  verificacionEmail(result: any): Boolean {
+    if (result.user?.emailVerified) {
+      return true;
+    }
+    return false;
+  }
   /**
    * Metodo para realizar el registro de usuario
    * @param email
@@ -70,10 +81,19 @@ export class AuthService {
       const result = await this.afAuth
         .createUserWithEmailAndPassword(email, password);
       await this.SetUserData(result.user, name);
-
+      this.verifyAccount()
     } catch (error) {
-
+      console.log(error)
     }
+  }
+  /**
+   * Metodo par enviar el correo de verificacion al usuario
+   * @param email
+   */
+
+  verifyAccount() {
+    this.afAuth.currentUser.then(user =>
+      user?.sendEmailVerification())
   }
 
   /**
@@ -132,4 +152,19 @@ export class AuthService {
   //     })
   //   )
   // }
+
+  // SetUserData(user: any) {
+  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+  //     `users/${user.uid}`
+  //   );
+  //   const userData: User = {
+  //     uid: user.uid,
+  //     email: user.email,
+  //     displayName: user.displayName
+  //   };
+  //   return userRef.set(userData, {
+  //     merge: true,
+  //   });
+  // }
+
 }
