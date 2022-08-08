@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
+
 import { ToastrService } from 'ngx-toastr';
 
-=======
->>>>>>> Daniel-Steven-Gil-Cruz
 import { FirebaseCodeErrorService } from '../../services/firebase-code-error.service';
 @Component({
   selector: 'sofka-password-recovery',
@@ -48,23 +46,15 @@ export class PasswordRecoveryComponent {
     this.afAuth
       .sendPasswordResetEmail(email)
       .then(() => {
-<<<<<<< HEAD
         this.router.navigate(['/login']);
+        this.toastr.info(
+          'Le enviamos un correo para restablecer su password',
+          'Recuperar Password'
+        );
       })
       .catch((error) => {
         this.firebaseError.codeError(error.code), 'Error';
         this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-=======
-        /* this.toastr.info(
-    'Le·enviamos·un·correo·para·restablecer·su·password',
-    'Recuperar·Password'
-  );*/
-        this.router.navigate(['/login']);
-      })
-      .catch((error) => {
-        this.loading = false;
-        //  this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
->>>>>>> Daniel-Steven-Gil-Cruz
       });
   }
 }
