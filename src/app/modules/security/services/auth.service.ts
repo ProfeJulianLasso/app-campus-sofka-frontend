@@ -52,13 +52,24 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        alert("entro")
-
-        this.router.navigate(['']);
+        if (this.verificacionEmail(result)) {
+          alert("prueba")
+          this.router.navigate(['']);
+        }
       })
+
       .catch((error) => {
         console.log(error);
       });
+  }
+
+
+
+  verificacionEmail(result: any): Boolean {
+    if (result.user?.emailVerified) {
+      return true;
+    }
+    return false;
   }
   /**
    * Metodo para realizar el registro de usuario
@@ -77,7 +88,7 @@ export class AuthService {
   }
   /**
    * Metodo par enviar el correo de verificacion al usuario
-   * @param email 
+   * @param email
    */
 
   verifyAccount() {
