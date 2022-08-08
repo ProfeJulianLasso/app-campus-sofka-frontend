@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
     email: ["", [Validators.required, Validators.email]],
     password: ["", [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/), Validators.maxLength(8)]],
     confirm: ["", [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/), Validators.maxLength(8)]],
-    
+
   })
   ngOnInit(): void { }
 
