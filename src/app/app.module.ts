@@ -36,4 +36,4 @@ import { AngularFireModule } from '@angular/fire/compat';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
