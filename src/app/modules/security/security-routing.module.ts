@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Guards
 
-// Pages
+// Pages}
 import { AuthComponent } from './pages/auth/auth.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'singup'
+        redirectTo: 'login'
       }
     ]
   }

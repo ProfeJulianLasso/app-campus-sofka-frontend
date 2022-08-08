@@ -1,30 +1,62 @@
-<form class="form-login" [formGroup]="login">
+<form
+  class="form-login"
+  (ngSubmit)="singIn(email.value, password.value)"
+  [formGroup]="login"
+>
   <h2>Iniciar sesión</h2>
   <div class="inputs">
     <mat-form-field appearance="fill">
       <mat-label>Correo electronico</mat-label>
       <input #email matInput formControlName="email" required />
-      <mat-error *ngIf="fieldValidator('name')">{{
-        'Ingresa tu nombre completo'
-        }}</mat-error>
+      <mat-error *ngIf="fieldValidator('email')">{{
+        'Ingresa un email valido!'
+      }}</mat-error>
     </mat-form-field>
   </div>
   <div class="inputs">
     <mat-form-field appearance="fill">
       <mat-label>Enter your password</mat-label>
-      <input #password formControlName="password" required matInput [type]="hide ? 'password' : 'text'" />
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide">
+      <input
+        #password
+        formControlName="password"
+        required
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
         <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
+      <mat-error *ngIf="fieldValidator('password')">{{
+        'Ingresa tu contraseña'
+      }}</mat-error>
     </mat-form-field>
-    <button (click)="singIn()" mat-raised-button class= "button-log" [disabled]="login.invalid" color="primary">Ingresar</button>
-    <hr>
-    <div class= "control">
-      <button mat-raised-button class= "button-session" color="warn">Crear cuenta</button>
+    <button
+      mat-raised-button
+      class="button-log"
+      [disabled]="login.invalid"
+      color="primary"
+    >
+      Ingresar
+    </button>
+    <hr />
+    <div class="control">
+      <button
+        mat-raised-button
+        class="button-session"
+        type="button"
+        color="warn"
+      >
+        Crear cuenta
+      </button>
     </div>
-    <div class= "control">
+    <div class="control">
       <a class="recovery" routerLink="#">¿Olvidaste tu contraseña?</a>
-      </div>
+    </div>
   </div>
 </form>

@@ -43,21 +43,23 @@ export class AuthService {
 
 
   /**
-   * metodo para iniciar sesion en la app
-   * @param email
-   * @param password
-   */
+  * metodo para iniciar sesion en la app
+  * @param email
+  * @param password
+  */
 
-  async SignIn(email: string, password: string) {
-    try {
-      await this.afAuth
-        .signInWithEmailAndPassword(email, password);
+  SignIn(email: string, password: string) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        alert("entro")
 
-    } catch (error) {
-
-    }
+        this.router.navigate(['']);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-
   /**
    * Metodo para realizar el registro de usuario
    * @param email

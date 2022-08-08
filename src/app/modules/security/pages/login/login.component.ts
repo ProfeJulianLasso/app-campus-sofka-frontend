@@ -16,22 +16,19 @@ export class LoginComponent implements OnInit {
   }
 
   login: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]]
-    // password: ["", [Validators.required, Validators.max(8)]],
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", [Validators.required, Validators.required, Validators.minLength(8), Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/), Validators.maxLength(8)]]
   });
 
   ngOnInit(): void { }
 
   fieldValidator(fiel: string) {
+    return this.login.controls?.[fiel].errors && this.login.controls?.[fiel].touched
 
   }
 
-  singIn() {
-    const email = this.login.value.email;
-    const password = this.login.value.password;
-
+  singIn(email: string, password: string) {
     this.authService.SignIn(email, password);
-
   }
 }
 
