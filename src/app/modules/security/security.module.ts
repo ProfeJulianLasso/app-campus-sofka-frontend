@@ -23,7 +23,6 @@ import { SecurityRoutingModule } from './security-routing.module';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 // Pages
-import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { AuthComponent } from './pages/auth/auth.component';
@@ -32,7 +31,6 @@ import { PasswordRecoveryComponent } from './pages/password-recovery/password-re
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
-    LoginComponent,
     SignUpComponent,
     SignInComponent,
     LoginModalComponent,
