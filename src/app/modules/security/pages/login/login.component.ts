@@ -11,17 +11,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   hide: boolean;
-  constructor(private fb: FormBuilder,
-    public authService: AuthService
-  ) {
+  constructor(private fb: FormBuilder, public authService: AuthService) {
     this.hide = true;
   }
 
   login: FormGroup = this.fb.group({
-    email: ["", [Validators.required, Validators.email]]
-   // password: ["", [Validators.required, Validators.max(8)]],
-
-  })
+    email: ['', [Validators.required, Validators.email]]
+    // password: ["", [Validators.required, Validators.max(8)]],
+  });
 
   ngOnInit(): void { }
 

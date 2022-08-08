@@ -53,8 +53,8 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(result);
-        
+        alert("entro")
+
         this.router.navigate(['']);
       })
       .catch((error) => {
