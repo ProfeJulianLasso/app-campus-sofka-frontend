@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
+  firebaseConfig: {
     apiKey: "AIzaSyAiCqzCsM-0R9804204qMKqPsZrGH5_xuw",
     authDomain: "retofinal-c203d.firebaseapp.com",
     projectId: "retofinal-c203d",
@@ -12,7 +12,11 @@ export const environment = {
     messagingSenderId: "304253888036",
     appId: "1:304253888036:web:c0220e17f50a8f44b81ab1",
     measurementId: "G-56TLSFN5FE"
-  }
+  },
+  recaptcha: {
+    siteKey: '6LfKNi0cAAAAACeYwFRY9_d_qjGhpiwYUo5gNW5-',
+  },
+  passwordValidate: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g
 };
 
 /*

@@ -2,10 +2,15 @@
   class="form-register"
   [formGroup]="singUp"
   (ngSubmit)="
-    registerAcoount(name.value, email.value, password.value, confirm.value)
+    registerAcoount(
+      name.value,
+      email.value,
+      password.value,
+      passwordConfirm.value
+    )
   "
   autocomplete="off"
->
+> 
   <h2>Registrate</h2>
   <div class="inputs">
     <mat-form-field appearance="fill">
@@ -54,8 +59,8 @@
       <mat-label>Repite tu contraseña</mat-label>
       <input
         matInput
-        #confirm
-        formControlName="confirm"
+        #passwordConfirm
+        formControlName="passwordConfirm"
         [type]="hide2 ? 'password' : 'text'"
       />
       <button
@@ -68,13 +73,24 @@
         <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
 
-      <mat-error *ngIf="fieldValidator('confirm')">{{
+      <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
         'Tu contraseña debe tener 8 caracteres'
       }}</mat-error>
+      <mat-error *ngIf="passwordMatchError">
+        Las contraseñas no coinciden
+      </mat-error>
     </mat-form-field>
   </div>
   <div class="inputs">
     <h2>Aqui el validador</h2>
+  </div>
+  <div class="inputs">
+    <section class="example-section">
+      <mat-checkbox #check class="example-margin"
+        >Aceptar los terminos de tratamiento de datos</mat-checkbox
+      >
+      <mat-error *ngIf="fieldValidator('check')">{{ '' }}</mat-error>
+    </section>
   </div>
 
   <div class="inputs">
@@ -89,6 +105,6 @@
   </div>
   <hr />
   <div class="retrieve">
-    <a routerLink="/password">¿Olvidaste tu contraseña?</a>
+    <a class="password" routerLink="/password">¿Olvidaste tu contraseña?</a>
   </div>
 </form>
