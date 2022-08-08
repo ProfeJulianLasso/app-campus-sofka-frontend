@@ -30,8 +30,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     AppRoutingModule,
     BrowserAnimationsModule,
     SecurityModule,
-    ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
