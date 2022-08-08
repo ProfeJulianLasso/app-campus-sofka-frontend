@@ -26,8 +26,29 @@ export class PasswordRecoveryComponent {
     });
   }
 
+  /**
+   * [
+   *  contiene el metodo recovery() donde poderes recuperar la contraseña
+   *  toma el input email enviado en el boton recuperar dentra a 
+   *   .then(() => {
+        this.router.navigate(['/login']);
+        })
+   *  si todo es exitoso manda el correo donde podemos recuperar la contraseña 
+   *     
+   *     .catch((error) => {
+        this.loading = false;
+        this.firebaseError.codeError(error.code), 'Error';
+      });  
+   *  si hay un error            
+   * ]
+   * @version [1,0.0]
+   *
+   * @author [Yeferson Valencia, alejandro.yandd@gmail.com]
+   * @since [1,0,0]
+   *
+   */
   recovery() {
-    const email = this.recoveryUser.value.correo;
+    const email = this.recoveryUser.value.email;
     this.loading = true;
     this.afAuth
       .sendPasswordResetEmail(email)
@@ -38,12 +59,5 @@ export class PasswordRecoveryComponent {
         this.loading = false;
         this.firebaseError.codeError(error.code), 'Error';
       });
-  }
-
-  fieldValidator(fiel: string) {
-    return (
-      this.recoveryUser.controls?.[fiel].errors &&
-      this.recoveryUser.controls?.[fiel].touched
-    );
   }
 }
