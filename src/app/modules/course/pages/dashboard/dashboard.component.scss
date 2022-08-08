@@ -2,3 +2,12 @@
     width: 20%;
     height: 20%;
 }
+
+.container{
+  width: 100%;
+}
+
+.row{
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+}
