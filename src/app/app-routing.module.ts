@@ -15,7 +15,8 @@ const routes: Routes = [
       import('./modules/security/security.module').then((m) => m.SecurityModule)
   },
   {
-    path: "dashboard", component: DashboardComponent
+    path: 'dashboard',
+    component: DashboardComponent
     //loadChildren: () => import("../app/templates/main2022/main.module").then(m => m.MainModule)
   },
   {
