@@ -1,9 +1,16 @@
-<form class="form-register" [formGroup]="singIng">
+<form
+  class="form-register"
+  [formGroup]="singUp"
+  (ngSubmit)="
+    registerAcoount(name.value, email.value, password.value, confirm.value)
+  "
+  autocomplete="off"
+>
   <h2>Registrate</h2>
   <div class="inputs">
     <mat-form-field appearance="fill">
       <mat-label>Nombre completo</mat-label>
-      <input matInput formControlName="name" required />
+      <input matInput formControlName="name" required #name />
       <mat-error *ngIf="fieldValidator('name')">{{
         'Ingresa tu nombre completo'
       }}</mat-error>
@@ -12,25 +19,21 @@
   <div class="inputs">
     <mat-form-field appearance="fill">
       <mat-label>Correo electronico</mat-label>
-      <input matInput formControlName="email" required />
-      <mat-error *ngIf="fieldValidator('name')">{{
-        'Ingresa tu nombre completo'
+      <input matInput formControlName="email" required #email />
+      <mat-error *ngIf="fieldValidator('email')">{{
+        'Ingresa un correo valido'
       }}</mat-error>
     </mat-form-field>
   </div>
   <div class="inputs">
     <mat-form-field appearance="fill">
       <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="password" required />
-      <mat-error *ngIf="fieldValidator('password')">{{
-        'Tu contraseña debe tener 8 caracteres y una mayuscula'
-      }}</mat-error>
-    </mat-form-field>
-  </div>
-  <div class="inputs">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+      <input
+        matInput
+        #password
+        formControlName="password"
+        [type]="hide ? 'password' : 'text'"
+      />
       <button
         mat-icon-button
         matSuffix
@@ -40,9 +43,58 @@
       >
         <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
+
+      <mat-error *ngIf="fieldValidator('password')">{{
+        'Tu contraseña debe tener 8 caracteres'
+      }}</mat-error>
     </mat-form-field>
   </div>
   <div class="inputs">
-    <button mat-raised-button color="primary">Primary</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Repite tu contraseña</mat-label>
+      <input
+        matInput
+        #confirm
+        formControlName="confirm"
+        [type]="hide2 ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide2 = !hide2"
+        [attr.aria-label]="'Hide confirm'"
+        [attr.aria-pressed]="hide2"
+      >
+        <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="fieldValidator('confirm')">{{
+        'Tu contraseña debe tener 8 caracteres'
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="inputs">
+    <h2>Aqui el validador</h2>
+  </div>
+  <!--x<div class="inputs">
+    <mat-checkbox class="example-margin" #checked required
+      >Estoy de acuerdo con el tratamiento de datos</mat-checkbox
+    >
+    <mat-error *ngIf="fieldValidator('checked')">{{ '' }}</mat-error>
+  </div>  -->
+
+  <div class="inputs">
+    <button
+      class="btn-registro"
+      mat-raised-button
+      color="primary"
+      [disabled]="singUp.invalid"
+    >
+      Crear Cuenta
+    </button>
+  </div>
+  <hr />
+  <div class="retrieve">
+    <a routerLink="/password">¿Olvidaste tu contraseña?</a>
   </div>
 </form>

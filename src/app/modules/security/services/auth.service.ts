@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 import { User } from '../interfaces/IUser';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -51,14 +50,10 @@ export class AuthService {
     try {
       await this.afAuth
         .signInWithEmailAndPassword(email, password);
-
     } catch (error) {
 
     }
   }
-
-
-
 
   /**
    * Metodo para realizar el registro de usuario
@@ -70,10 +65,19 @@ export class AuthService {
       const result = await this.afAuth
         .createUserWithEmailAndPassword(email, password);
       await this.SetUserData(result.user, name);
-
+      this.verifyAccount()
     } catch (error) {
-
+      console.log(error)
     }
+  }
+  /**
+   * Metodo par enviar el correo de verificacion al usuario
+   * @param email 
+   */
+
+  verifyAccount() {
+    this.afAuth.currentUser.then(user =>
+      user?.sendEmailVerification())
   }
 
   /**

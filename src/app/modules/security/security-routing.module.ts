@@ -35,7 +35,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'password'
+        redirectTo: 'singup'
       }
     ]
   }
@@ -45,4 +45,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SecurityRoutingModule {}
+export class SecurityRoutingModule { }
