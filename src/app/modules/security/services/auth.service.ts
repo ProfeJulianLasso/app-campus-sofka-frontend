@@ -122,7 +122,7 @@ export class AuthService {
     });
   }
 
-    /**
+  /**
    * [
    *  Metodo recovery(), donde se puede recuperar la contraseña,
    *  se recupera el valor del email enviado const email y se realizan las

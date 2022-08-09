@@ -25,9 +25,8 @@ mat-toolbar {
 
 .container {
     display: grid;
-    grid-template-columns: 475px 475px 475px;
-    background-color: rgb(18, 100, 171);
-    padding: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
 }
 
 div:hover {
