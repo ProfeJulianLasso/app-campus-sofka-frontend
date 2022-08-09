@@ -2,12 +2,14 @@
   class="form-register"
   [formGroup]="singUp"
   (ngSubmit)="
-    registerAcoount(
-      name.value,
-      email.value,
-      password.value,
-      passwordConfirm.value
-    )
+    singUp.valid
+      ? registerAcoount(
+          name.value,
+          email.value,
+          password.value,
+          passwordConfirm.value
+        )
+      : false
   "
   autocomplete="off"
 >
@@ -38,6 +40,7 @@
         #password
         formControlName="password"
         [type]="hide ? 'password' : 'text'"
+        maxlength="8"
       />
       <button
         mat-icon-button
@@ -50,7 +53,7 @@
       </button>
 
       <mat-error *ngIf="fieldValidator('password')">{{
-        'Tu contraseña debe tener 8 caracteres'
+        'error minimo 8 caracteres y una mayuscula'
       }}</mat-error>
     </mat-form-field>
   </div>
@@ -62,6 +65,7 @@
         #passwordConfirm
         formControlName="passwordConfirm"
         [type]="hide2 ? 'password' : 'text'"
+        maxlength="8"
       />
       <button
         mat-icon-button
@@ -72,25 +76,13 @@
       >
         <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
-
       <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
         'Tu contraseña debe tener 8 caracteres'
       }}</mat-error>
-      <mat-error *ngIf="passwordMatchError">
-        Las contraseñas no coinciden
-      </mat-error>
     </mat-form-field>
   </div>
   <div class="inputs">
     <h2>Aqui el validador</h2>
-  </div>
-  <div class="inputs">
-    <section class="example-section">
-      <mat-checkbox #check class="example-margin"
-        >Aceptar los terminos de tratamiento de datos</mat-checkbox
-      >
-      <mat-error *ngIf="fieldValidator('check')">{{ '' }}</mat-error>
-    </section>
   </div>
 
   <div class="inputs">

@@ -8,6 +8,7 @@ import { Course } from '../../../security/interfaces/ICourse';
 })
 export class DashboardComponent implements OnInit {
   listCourses: Course[] = [];
+  gridColumns = 3;
 
   constructor(private dashboardService: DashboardService) {}
 

@@ -1,3 +1,9 @@
+<div class="header">
+  <a routerLink="/singIn">
+    <img src="../../../../../assets/images/logo-pequeño.png" class="logo" />
+  </a>
+  <h2 class="header-title">#ElDesafioEsContigo</h2>
+</div>
 <div class="container">
   <div class="card">
     <div>
@@ -9,7 +15,12 @@
       <p id="texto">
         Estamos construyendo la mejor experiencia de aprendizaje para ti,
         esperamos disfrutes de los cursos que encontrarás en el Campus de Sofka
-        U. Click aquí y chatea con nosotros a través de WhatsApp
+        U.<a
+          class="link"
+          href="https://api.whatsapp.com/send?phone=573193331091"
+        >
+          Click aquí y chatea con nosotros a través de WhatsApp</a
+        >
       </p>
     </div>
   </div>
@@ -17,4 +28,6 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-<div class="title">#ElDesafioEsContigo</div>
+<div class="title">
+  En sofka u potenciamos <span class="future">TU FUTURO</span>
+</div>

@@ -10,6 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 // Routing
 import { CourseRoutingModule } from './course-routing.module';
 
@@ -36,7 +39,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FlexLayoutModule,
+    MatToolbarModule
   ]
 })
 export class CourseModule {}
