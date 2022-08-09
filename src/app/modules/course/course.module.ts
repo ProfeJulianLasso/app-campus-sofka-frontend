@@ -27,9 +27,10 @@ import { CourseRoutingModule } from './course-routing.module';
 // Pages
 import { CourseComponent } from './pages/course/course.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+import { MainModule } from 'src/app/templates/main2022/main.module';
+import { CourseTopicsComponent } from './pages/course-topics/course-topics.component';
 @NgModule({
-  declarations: [CourseComponent, DashboardComponent],
+  declarations: [CourseComponent, DashboardComponent, CourseTopicsComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
@@ -41,7 +42,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     MatIconModule,
     MatCheckboxModule,
     FlexLayoutModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MainModule
   ]
 })
-export class CourseModule {}
+export class CourseModule { }

@@ -23,7 +23,7 @@ import { SecurityModule } from './modules/security/security.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 @NgModule({
-  declarations: [AppComponent, IndexComponent,],
+  declarations: [AppComponent, IndexComponent],
   imports: [
     BrowserModule,
     MainModule,
@@ -34,6 +34,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
+  exports: [MainModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,61 @@
+.container {
+    max-width: 120px;
+}
+
+.principal {
+    position: relative;
+    top: 50px;
+}
+
+.absoluto {
+    position: absolute;
+}
+
+.primero {
+    top: -75px;
+    left: 20px;
+}
+
+.segundo {
+    top: -50px;
+    left: -35px;
+}
+
+.tercero {
+    top: 5px;
+    left: -50px;
+}
+
+
+/* Nuevas clases */
+
+.x-y-center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.g {
+    font-size: 55px !important;
+    width: 100px;
+    height: 100px;
+    border-radius: 50% !important;
+    transition: all .2s ease-in-out;
+    margin: 25px 0px 25px 0px;
+}
+
+.d {
+    font-size: 25px !important;
+    transition: all .2s ease-in-out;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    margin: 25px 0px 5px 0px;
+}
+
+.g:hover,
+.d:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 5px #888888;
+}

@@ -1,19 +1,17 @@
-<!-- <mat-card class="tp-card">
-    <mat-card-header>
-        <div mat-card-avatar class="tp-header-image"></div>
-        <mat-card-title>HTML5</mat-card-title>
-        <mat-card-subtitle>HTML Basics</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://www.tutorialspoint.com/materialize/src/html5-mini-logo.jpg" alt="Learn HTML5">
-    <mat-card-content>
-        <p>
-            HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for structuring and presenting content on the World Wide Web.
-        </p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-    </mat-card-actions>
-</mat-card> -->
-
-<h2>hola</h2>
+<div class="container">
+    <div class="content" *ngFor="let course of listCourses">
+        <mat-card class="mat-elevation-z4">
+            <img mat-card-image src="../../../../../assets/images/prueba.jpg" />
+            <mat-card-content>
+                <mat-card-title>{{ course.course }}</mat-card-title>
+                <p>
+                    {{ course.category }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>INICIAR</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

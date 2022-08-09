@@ -7,14 +7,22 @@ import { RouterModule, Routes } from '@angular/router';
 // Pages
 import { CourseComponent } from './pages/course/course.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CourseTopicsComponent } from './pages/course-topics/course-topics.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'course', component: CourseComponent }
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: 'course-list', component: CourseComponent },
+      { path: 'course-topics', component: CourseTopicsComponent },
+      { path: '**', redirectTo: 'course-list' }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CourseRoutingModule {}
+export class CourseRoutingModule { }

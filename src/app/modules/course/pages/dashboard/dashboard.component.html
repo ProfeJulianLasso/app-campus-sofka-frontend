@@ -1,20 +1,11 @@
-<div class="container">
-    <div class="content" *ngFor="let course of listCourses">
-        <mat-card class="mat-elevation-z4">
-            <mat-card-header>
-                <mat-card-title>{{course.course}}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="../../../../../assets/images/logo-sofka-university.webp">
-            <mat-card-content>
-                <mat-card-title>{{course.course}}</mat-card-title>
-                <p>
-                    {{course.category}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>INICIAR</button>
-                <button mat-button>SHARE</button>
-            </mat-card-actions>
-        </mat-card>
+<div class="first-container">
+  <div [class.mat-elevation-z2]="false">
+    <sofka-menu></sofka-menu>
+  </div>
+  <div class="second-container">
+    <sofka-header [name]="name"></sofka-header>
+    <div [class.mat-elevation-z2]="false">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>
