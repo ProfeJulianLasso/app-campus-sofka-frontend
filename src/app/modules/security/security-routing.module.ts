@@ -17,10 +17,6 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       {
-        path: 'login',
-        component: SignInComponent
-      },
-      {
         path: 'singin',
         component: SignInComponent
       },
@@ -34,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'password'
+        redirectTo: 'singin'
       }
     ]
   }
