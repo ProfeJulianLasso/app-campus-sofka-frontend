@@ -34,6 +34,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
+  exports: [MainModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

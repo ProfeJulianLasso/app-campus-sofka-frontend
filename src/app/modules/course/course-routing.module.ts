@@ -9,12 +9,17 @@ import { CourseComponent } from './pages/course/course.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'course', component: CourseComponent }
+  {
+    path: "", component: DashboardComponent,
+    children: [
+      { path: "course-list", component: CourseComponent },
+      { path: "**", redirectTo: "course-list" }
+    ]
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CourseRoutingModule {}
+export class CourseRoutingModule { }

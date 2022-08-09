@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'sofka-header',
@@ -6,6 +6,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() name?: string;
   constructor() { }
 
   ngOnInit(): void { }

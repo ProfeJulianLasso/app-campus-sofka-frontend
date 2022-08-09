@@ -1,6 +1,7 @@
 // Libraries
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './templates/main2022/components/dashboard/dashboard.component';
 
 // Guards
 
@@ -13,9 +14,9 @@ const routes: Routes = [
       import('./modules/security/security.module').then((m) => m.SecurityModule)
   },
   {
-    path: 'home',
-    loadChildren: () =>
-      import('../app/templates/main2022/main.module').then((m) => m.MainModule)
+    path: 'dashboard',
+    component: DashboardComponent
+    //loadChildren: () => import("../app/templates/main2022/main.module").then(m => m.MainModule)
   },
   {
     path: 'course',
