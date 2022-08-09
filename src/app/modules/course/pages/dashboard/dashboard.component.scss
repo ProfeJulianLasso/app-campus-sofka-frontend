@@ -3,7 +3,7 @@
 }
 
 .content>mat-card {
-    width: 200px;
+    width: 390px;
 }
 
 mat-toolbar {
@@ -21,4 +21,15 @@ mat-toolbar {
 .column-label {
     margin-right: 8px;
     font-size: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+}
+
+div:hover {
+    border: 1px solid rgba(255, 255, 255, 0);
+    ;
 }

@@ -1,10 +1,6 @@
 // Libraries
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ValidateTokenGuard } from './modules/security/guards/validate-token.guard';
-import { DashboardComponent } from './templates/main2022/components/dashboard/dashboard.component';
-import { MenuComponent } from './templates/main2022/components/menu/menu.component';
-import { CourseComponent } from './modules/course/pages/course/course.component';
 
 // Guards
 
@@ -17,10 +13,9 @@ const routes: Routes = [
       import('./modules/security/security.module').then((m) => m.SecurityModule)
   },
   {
-    path: "dashboard", component: DashboardComponent,
-    canLoad: [ValidateTokenGuard], // prevenir la carga de un componente
-    canActivate: [ValidateTokenGuard] //previene que el usuario ingrese a una ruta en especifico
-
+    path: 'home',
+    loadChildren: () =>
+      import('../app/templates/main2022/main.module').then((m) => m.MainModule)
   },
   {
     path: 'course',

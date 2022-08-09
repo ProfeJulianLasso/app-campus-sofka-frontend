@@ -25,7 +25,7 @@ export class PasswordRecoveryComponent {
 
   /**
    * [
-   *  Metodo recovery(), donde se puede recuperar la contraseña,
+   *  recoveryPassword(), donde se puede recuperar la contraseña,
    *  se recupera el valor del email enviado const email y se llama
    *  el service
    * ]
