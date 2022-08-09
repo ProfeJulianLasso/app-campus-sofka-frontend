@@ -9,7 +9,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { MatInputModule } from '@angular/material/input'
 // Components
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,6 +25,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatRippleModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     FormsModule
   ],

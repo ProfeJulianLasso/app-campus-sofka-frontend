@@ -4,25 +4,20 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { User } from '../interfaces/IUser';
+import { environment } from 'src/environments/environment';
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private token: string;
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
     public router: Router
   ) {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        localStorage.setItem('id', user.uid!);
-        localStorage.setItem('name', user.displayName!);
-        localStorage.setItem('email', user.email!);
-      } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-      }
-    });
+    this.token = "";
+
   }
 
   /**
@@ -54,6 +49,7 @@ export class AuthService {
       .then((result) => {
         if (this.verificacionEmail(result)) {
           this.router.navigate(['/dashboard']);
+          this.getUserToken();
         }
       })
 
@@ -61,10 +57,13 @@ export class AuthService {
         console.log(error);
       });
   }
+  /**
+   * Metodo para verificar si la cuenta se encuentra activa
+   * @param result 
+   * @returns verdadero o false
+   */
 
-
-
-  verificacionEmail(result: any): Boolean {
+  verificacionEmail(result: any): boolean {
     if (result.user?.emailVerified) {
       return true;
     }
@@ -133,37 +132,28 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut();
-    localStorage.removeItem("id")
-    localStorage.removeItem("email")
+    localStorage.removeItem("token")
   }
   /**
-   * metodo para verificar si un usuario esta activo
-   * @returns
+   * Metodo para obtener el token del usuario 
+   * que ingreso al aplicativo por medio del incio de sesion
    */
-  // verifySession(): Observable<boolean> {
-  //   const id = localStorage.getItem("id");
-  //   if (!localStorage.getItem("id")) {
-  //     return of(false);
-  //   }
-  //   return this.http.get<Player>(`${this.urlRequestMongo}/listplayer/${id}`).pipe(
-  //     map(auth => {
-  //       return true;
-  //     })
-  //   )
-  // }
+  getUserToken(): void {
+    this.afAuth.currentUser.then((user) => {
+      user?.getIdToken().then((token) => {
+        console.log(token)
+        this.token = token;
+        localStorage.setItem(environment.token, token);
+      });
+    });
+  }
 
-  // SetUserData(user: any) {
-  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-  //     `users/${user.uid}`
-  //   );
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName
-  //   };
-  //   return userRef.set(userData, {
-  //     merge: true,
-  //   });
-  // }
 
+  verifyToken(): Observable<boolean> {
+    if (localStorage.getItem("token")) {
+      return of(true);
+    }
+
+    return of(false);
+  }
 }

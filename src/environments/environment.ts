@@ -13,6 +13,7 @@ export const environment = {
     appId: "1:304253888036:web:c0220e17f50a8f44b81ab1",
     measurementId: "G-56TLSFN5FE"
   },
+  token: 'token',
   recaptcha: {
     siteKey: '6LfKNi0cAAAAACeYwFRY9_d_qjGhpiwYUo5gNW5-',
   },
