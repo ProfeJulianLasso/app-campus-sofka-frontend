@@ -15,17 +15,20 @@ import { FirebaseCodeErrorService } from './firebase-code-error.service';
 })
 export class AuthService {
   private token: string;
+  private status: boolean;
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
-    private toastr: ToastrService,
     private firebaseError: FirebaseCodeErrorService,
-    public router: Router
   ) {
     this.token = "";
+    this.status = false;
 
   }
 
+  get status_user() {
+    return this.status;
+  }
   /**
    * metodo para realizar un registro con google
    * @param email
@@ -54,8 +57,8 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         if (this.verificacionEmail(result)) {
-          this.router.navigate(['/dashboard']);
           this.getUserToken();
+          this.status = true;
         }
       })
 
@@ -77,19 +80,21 @@ export class AuthService {
   }
   /**
    * Metodo para realizar el registro de usuario
-   * @param email
-   * @param password
+   * @param name 
+   * @param email 
+   * @param password 
    */
-  async SignUp(name: string, email: string, password: string) {
-    try {
-      const result = await this.afAuth
-        .createUserWithEmailAndPassword(email, password);
-      await this.SetUserData(result.user, name);
-      this.verifyAccount()
-    } catch (error) {
-      console.log(error)
-    }
+  SignUp(name: string, email: string, password: string) {
+    return this.afAuth
+      .createUserWithEmailAndPassword(email, password).then((result) => {
+        this.SetUserData(result.user, name);
+        this.verifyAccount()
+      }).catch((error) =>
+        console.log(error)
+      )
   }
+
+
   /**
    * Metodo par enviar el correo de verificacion al usuario
    * @param email
@@ -123,31 +128,21 @@ export class AuthService {
   }
 
   /**
- * [
- *  Metodo recovery(), donde se puede recuperar la contraseña,
- *  se recupera el valor del email enviado const email y se realizan las
- *  validaciones corespondientes.
- * ]
- * @version [1,0.0]
- *
- * @author [Yeferson Valencia, alejandro.yandd@gmail.com]
- * @since [1,0,0]
- *
- */
+  * [
+  *  Metodo recovery(), donde se puede recuperar la contraseña,
+  *  se recupera el valor del email enviado const email y se realizan las
+  *  validaciones corespondientes.
+  * ]
+  * @version [1,0.0]
+  *
+  * @author [Yeferson Valencia, alejandro.yandd@gmail.com]
+  * @since [1,0,0]
+  *
+  */
   recovery(email: string) {
-    this.afAuth
+    return this.afAuth
       .sendPasswordResetEmail(email)
-      .then(() => {
-        this.router.navigate(['/login']);
-        this.toastr.info(
-          'Le enviamos un correo para restablecer su password',
-          'Recuperar Password'
-        );
-      })
-      .catch((error) => {
-        this.firebaseError.codeError(error.code), 'Error';
-        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      });
+
   }
 
   /**
@@ -180,7 +175,10 @@ export class AuthService {
       });
     });
   }
-
+  /**
+   * verificacion del
+   * @returns 
+   */
 
   verifyToken(): Observable<boolean> {
     if (localStorage.getItem("token")) {

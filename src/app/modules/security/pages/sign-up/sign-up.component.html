@@ -1,16 +1,7 @@
 <form
   class="form-register"
-  [formGroup]="singUp"
-  (ngSubmit)="
-    singUp.valid
-      ? registerAcoount(
-          name.value,
-          email.value,
-          password.value,
-          passwordConfirm.value
-        )
-      : false
-  "
+  [formGroup]="formsingUp"
+  (ngSubmit)="registerAcoount()"
   autocomplete="off"
 >
   <h2>Registrate</h2>
@@ -76,9 +67,6 @@
       >
         <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
-      <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
-        'Tu contraseña debe tener 8 caracteres'
-      }}</mat-error>
     </mat-form-field>
   </div>
   <div class="inputs">
@@ -86,12 +74,7 @@
   </div>
 
   <div class="inputs">
-    <button
-      class="btn-registro"
-      mat-raised-button
-      color="primary"
-      [disabled]="singUp.invalid"
-    >
+    <button class="btn-registro" mat-raised-button color="primary">
       Crear Cuenta
     </button>
   </div>
