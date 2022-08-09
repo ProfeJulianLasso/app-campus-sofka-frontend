@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ValidateTokenGuard } from './modules/security/guards/validate-token.guard';
 import { DashboardComponent } from './templates/main2022/components/dashboard/dashboard.component';
 import { MenuComponent } from './templates/main2022/components/menu/menu.component';
+import { CourseComponent } from './modules/course/pages/course/course.component';
 
 // Guards
 

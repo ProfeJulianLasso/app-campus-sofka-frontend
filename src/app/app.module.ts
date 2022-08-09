@@ -22,19 +22,16 @@ import { SecurityModule } from './modules/security/security.module';
 
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-import { CourseModule } from './modules/course/course.module';
 @NgModule({
   declarations: [AppComponent, IndexComponent,],
   imports: [
     BrowserModule,
     MainModule,
-    CourseModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SecurityModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig)
-
   ],
   providers: [],
   bootstrap: [AppComponent]
