@@ -17,9 +17,7 @@ export class MenuComponent implements OnInit {
     this.chatProps = TippyPropsModel.get('Chat');
     this.calendarProps = TippyPropsModel.get('Calendario');
     this.notificationsProps = TippyPropsModel.get('Notificaciones');
-
-    console.log(this.coursesProps);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

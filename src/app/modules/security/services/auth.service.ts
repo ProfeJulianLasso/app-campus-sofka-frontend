@@ -4,32 +4,31 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { User } from '../interfaces/IUser';
+import { environment } from 'src/environments/environment';
+import { Observable, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from './firebase-code-error.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private token: string;
+  private status: boolean;
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
-    private toastr: ToastrService,
     private firebaseError: FirebaseCodeErrorService,
-    public router: Router
   ) {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        localStorage.setItem('id', user.uid!);
-        localStorage.setItem('name', user.displayName!);
-        localStorage.setItem('email', user.email!);
-      } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-      }
-    });
+    this.token = "";
+    this.status = false;
+
   }
 
+  get status_user() {
+    return this.status;
+  }
   /**
    * metodo para realizar un registro con google
    * @param email
@@ -58,7 +57,8 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         if (this.verificacionEmail(result)) {
-          this.router.navigate(['/dashboard']);
+          this.getUserToken();
+          this.status = true;
         }
       })
 
@@ -66,10 +66,13 @@ export class AuthService {
         console.log(error);
       });
   }
+  /**
+   * Metodo para verificar si la cuenta se encuentra activa
+   * @param result 
+   * @returns verdadero o false
+   */
 
-
-
-  verificacionEmail(result: any): Boolean {
+  verificacionEmail(result: any): boolean {
     if (result.user?.emailVerified) {
       return true;
     }
@@ -77,19 +80,21 @@ export class AuthService {
   }
   /**
    * Metodo para realizar el registro de usuario
-   * @param email
-   * @param password
+   * @param name 
+   * @param email 
+   * @param password 
    */
-  async SignUp(name: string, email: string, password: string) {
-    try {
-      const result = await this.afAuth
-        .createUserWithEmailAndPassword(email, password);
-      await this.SetUserData(result.user, name);
-      this.verifyAccount()
-    } catch (error) {
-      console.log(error)
-    }
+  SignUp(name: string, email: string, password: string) {
+    return this.afAuth
+      .createUserWithEmailAndPassword(email, password).then((result) => {
+        this.SetUserData(result.user, name);
+        this.verifyAccount()
+      }).catch((error) =>
+        console.log(error)
+      )
   }
+
+
   /**
    * Metodo par enviar el correo de verificacion al usuario
    * @param email
@@ -123,31 +128,21 @@ export class AuthService {
   }
 
   /**
-   * [
-   *  Metodo recovery(), donde se puede recuperar la contraseña,
-   *  se recupera el valor del email enviado const email y se realizan las
-   *  validaciones corespondientes.
-   * ]
-   * @version [1,0.0]
-   *
-   * @author [Yeferson Valencia, alejandro.yandd@gmail.com]
-   * @since [1,0,0]
-   *
-   */
+  * [
+  *  Metodo recovery(), donde se puede recuperar la contraseña,
+  *  se recupera el valor del email enviado const email y se realizan las
+  *  validaciones corespondientes.
+  * ]
+  * @version [1,0.0]
+  *
+  * @author [Yeferson Valencia, alejandro.yandd@gmail.com]
+  * @since [1,0,0]
+  *
+  */
   recovery(email: string) {
-    this.afAuth
+    return this.afAuth
       .sendPasswordResetEmail(email)
-      .then(() => {
-        this.router.navigate(['/login']);
-        this.toastr.info(
-          'Le enviamos un correo para restablecer su password',
-          'Recuperar Password'
-        );
-      })
-      .catch((error) => {
-        this.firebaseError.codeError(error.code), 'Error';
-        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      });
+
   }
 
   /**
@@ -165,37 +160,31 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut();
-    localStorage.removeItem("id")
-    localStorage.removeItem("email")
+    localStorage.removeItem("token")
   }
   /**
-   * metodo para verificar si un usuario esta activo
-   * @returns
+   * Metodo para obtener el token del usuario 
+   * que ingreso al aplicativo por medio del incio de sesion
    */
-  // verifySession(): Observable<boolean> {
-  //   const id = localStorage.getItem("id");
-  //   if (!localStorage.getItem("id")) {
-  //     return of(false);
-  //   }
-  //   return this.http.get<Player>(`${this.urlRequestMongo}/listplayer/${id}`).pipe(
-  //     map(auth => {
-  //       return true;
-  //     })
-  //   )
-  // }
+  getUserToken(): void {
+    this.afAuth.currentUser.then((user) => {
+      user?.getIdToken().then((token) => {
+        console.log(token)
+        this.token = token;
+        localStorage.setItem(environment.token, token);
+      });
+    });
+  }
+  /**
+   * verificacion del
+   * @returns 
+   */
 
-  // SetUserData(user: any) {
-  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-  //     `users/${user.uid}`
-  //   );
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName
-  //   };
-  //   return userRef.set(userData, {
-  //     merge: true,
-  //   });
-  // }
+  verifyToken(): Observable<boolean> {
+    if (localStorage.getItem("token")) {
+      return of(true);
+    }
 
+    return of(false);
+  }
 }

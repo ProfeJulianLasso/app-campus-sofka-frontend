@@ -13,7 +13,7 @@ const routes: Routes = [
       import('./modules/security/security.module').then((m) => m.SecurityModule)
   },
   {
-    path: 'home',
+    path: 'dashboard',
     loadChildren: () =>
       import('../app/templates/main2022/main.module').then((m) => m.MainModule)
   },

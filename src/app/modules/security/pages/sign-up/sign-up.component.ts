@@ -2,53 +2,56 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../../services/auth.service';
-import { passwordValidator } from '../../validators/sync/passwordValidator';
+import { ToastrService } from 'ngx-toastr';
+import { CustomValidators } from '../../validators/sync/passwordValidator';
 @Component({
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
+
 export class SignUpComponent implements OnInit {
   hide: boolean;
   hide2: boolean;
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  submitted: boolean;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private toastr: ToastrService) {
     this.hide = true;
     this.hide2 = true;
+    this.submitted = true;
   }
-  singUp: FormGroup = this.fb.group({
+  formsingUp: FormGroup = this.fb.group({
     name: ["", [Validators.required, Validators.minLength(8)]],
     email: ["", [Validators.required, Validators.email]],
-    password: ["", [Validators.required, Validators.pattern(environment.passwordValidate)]],
+    password: ["", [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/), Validators.maxLength(8)]],
     passwordConfirm: ["", Validators.required],
-    check: [true, Validators.required]
-  },
 
-    [
-      passwordValidator.MatchValidator(
-        'password',
-        'passwordConfirm'
-      )
-    ]
+  },
+    CustomValidators.mustMatch('password', 'passwordConfirm') // insert here
   )
   ngOnInit(): void { }
 
 
 
-  get passwordMatchError(): boolean {
-    return (
-      this.singUp.getError('match') &&
-      this.singUp.get('passwordConfirm')?.touched &&
-      !this.singUp.get('passwordConfirm')?.hasError('required')
-    );
+  get f() {
+    return this.formsingUp.controls;
   }
-
 
   fieldValidator(fiel: string) {
-    return this.singUp.controls?.[fiel].errors && this.singUp.controls?.[fiel].touched
+    return this.formsingUp.controls?.[fiel].errors && this.formsingUp.controls?.[fiel].touched
   }
 
-  registerAcoount(name: string, email: string, password: string, confirm: string) {
-    this.authService
-      .SignUp(name, email, password)
-      .then((res) => this.singUp.reset());
+  registerAcoount() {
+    this.submitted = true;
+    if (this.formsingUp.invalid) {
+      return;
+    }
+    const user = this.formsingUp.getRawValue();
+    this.authService.SignUp(user.name, user.email, user.password).then(() => this.toastr.success(
+      'Le enviamos un correo para la validacion de tu cuenta',
+      'Registro exitoso'
+    )).catch(() => this.toastr.warning(
+      'Ocurrio un error con el registro',
+      'Registro fallido'));
   }
+
 }
