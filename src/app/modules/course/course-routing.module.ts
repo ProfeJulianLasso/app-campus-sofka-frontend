@@ -1,6 +1,7 @@
 // Libraries
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContentComponent } from './pages/content/content.component';
 
 // Guards
 
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'course-list', component: CourseComponent },
       { path: 'course-topics', component: CourseTopicsComponent },
+      { path: 'course-content', component: ContentComponent },
       { path: '**', redirectTo: 'course-list' }
     ]
   }

@@ -14,7 +14,9 @@ export class PasswordRecoveryComponent {
   frmRecoveryUser: FormGroup;
   hide: boolean;
 
-  constructor(private fb: FormBuilder, private authService: AuthService,
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
     private toastr: ToastrService,
     private firebaseError: FirebaseCodeErrorService,) {
     this.hide = true;
@@ -40,12 +42,14 @@ export class PasswordRecoveryComponent {
     if (this.frmRecoveryUser.invalid) {
       return;
     }
-    this.authService.recovery(email).then(() => {
-      this.toastr.info(
-        'Le enviamos un correo para restablecer su password',
-        'Recuperar Password'
-      );
-    })
+    this.authService
+      .recovery(email)
+      .then(() => {
+        this.toastr.info(
+          'Le enviamos un correo para restablecer su password',
+          'Recuperar Password'
+        );
+      })
       .catch((error) => {
         this.firebaseError.codeError(error.code), 'Error';
         this.toastr.error(this.firebaseError.codeError(error.code), 'Error');

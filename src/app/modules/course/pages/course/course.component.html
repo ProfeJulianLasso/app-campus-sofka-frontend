@@ -1,17 +1,17 @@
 <div class="container">
-    <div class="content" *ngFor="let course of listCourses">
+    <div class="content" *ngFor="
+      let course of listCourses paginate: { itemsPerPage: 6, currentPage: page }">
         <mat-card class="mat-elevation-z4">
-            <img mat-card-image src="../../../../../assets/images/prueba.jpg" />
+            <img mat-card-image src="../../../../../assets/images/prueba.jpg" class="img" />
             <mat-card-content>
                 <mat-card-title>{{ course.course }}</mat-card-title>
                 <p>
                     {{ course.category }}
                 </p>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>INICIAR</button>
-                <button mat-button>SHARE</button>
-            </mat-card-actions>
         </mat-card>
     </div>
+    <footer class="footer">
+        <!-- <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+    </footer>
 </div>
