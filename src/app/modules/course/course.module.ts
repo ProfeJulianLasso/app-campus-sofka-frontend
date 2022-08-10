@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
 // Material
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -15,7 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 // Routing
 import { CourseRoutingModule } from './course-routing.module';
 
@@ -34,8 +35,11 @@ import { MainModule } from 'src/app/templates/main2022/main.module';
 import { ContentComponent } from './pages/content/content.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { QuestionsComponent } from './components/questions/questions.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LessonComponent } from './components/lesson/lesson.component';
+import { CalendarModule } from '../calendar/calendar.module';
 @NgModule({
-  declarations: [CourseComponent, DashboardComponent, ContentComponent, NavigationMenuComponent, QuestionsComponent],
+  declarations: [CourseComponent, DashboardComponent, ContentComponent, NavigationMenuComponent, QuestionsComponent, LessonComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
@@ -48,7 +52,16 @@ import { QuestionsComponent } from './components/questions/questions.component';
     MatCheckboxModule,
     FlexLayoutModule,
     MatToolbarModule,
-    MainModule
+    MainModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    NgxPaginationModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgxDocViewerModule,
+    CalendarModule
   ]
 })
 export class CourseModule { }

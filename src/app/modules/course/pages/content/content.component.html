@@ -1,24 +1,10 @@
-<div class="row">
-  <button
-    mat-icon-button
-    [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
-  >
-    <mat-icon>more_vert</mat-icon>Menu principal
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voice mail</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
-  </mat-menu>
+<div [ngClass]="this.styles_content ? 'flex2' : 'flex'">
+  <div class="content">
+    <div class="size">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="date" *ngIf="true">
+    <sofka-main-calendar></sofka-main-calendar>
+  </div>
 </div>
-<router-outlet></router-outlet>

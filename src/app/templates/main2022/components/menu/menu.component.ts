@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TippyPropsModel } from '../../models/tippy-props.model';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'sofka-menu',
@@ -12,7 +13,7 @@ export class MenuComponent implements OnInit {
   calendarProps: TippyPropsModel;
   notificationsProps: TippyPropsModel;
 
-  constructor() {
+  constructor(private MenuService: MenuService) {
     this.coursesProps = TippyPropsModel.get('Cursos');
     this.chatProps = TippyPropsModel.get('Chat');
     this.calendarProps = TippyPropsModel.get('Calendario');
@@ -20,4 +21,8 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  openCalendar(): void {
+    this.MenuService.changeFlag(true)
+  }
 }

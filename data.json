@@ -1,0 +1,18 @@
+{
+  "calendario": [
+    {
+      "id": "1",
+      "datetime": "2022-03-02 12:30:00",
+      "title": "Ejemplo 1",
+      "url": "dirección de la sala",
+      "id_user": "12345"
+    },
+    {
+      "id": "2",
+      "datetime": "2022-03-02 12:30:00",
+      "title": "Ejemplo 2",
+      "url": "dirección de la sala",
+      "id_user": "12345"
+    }
+  ]
+}
