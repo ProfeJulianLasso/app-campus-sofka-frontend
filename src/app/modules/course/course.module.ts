@@ -48,12 +48,7 @@ import { QuestionsComponent } from './components/questions/questions.component';
     MatCheckboxModule,
     FlexLayoutModule,
     MatToolbarModule,
-    MainModule,
-    NgxPaginationModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule
-
+    MainModule
   ]
 })
 export class CourseModule { }

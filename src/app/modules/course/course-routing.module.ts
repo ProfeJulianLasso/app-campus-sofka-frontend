@@ -9,10 +9,12 @@ import { ContentComponent } from './pages/content/content.component';
 // Pages
 import { CourseComponent } from './pages/course/course.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CourseTopicsComponent } from './pages/course-topics/course-topics.component';
 
 const routes: Routes = [
   {
-    path: "", component: DashboardComponent,
+    path: '',
+    component: DashboardComponent,
     children: [
       { path: "course-list", component: CourseComponent },
       {
