@@ -9,6 +9,7 @@ import { Course } from '../../../security/interfaces/ICourse';
 export class CourseComponent implements OnInit {
   listCourses: Course[] = [];
   gridColumns = 3;
+  page?: number
 
   constructor(private dashboardService: DashboardService) { }
 
