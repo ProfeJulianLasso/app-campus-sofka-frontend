@@ -1,15 +1,6 @@
 .row {
-  display: flex;
-  background-color: aqua;
-  width: 100%;
-}
-.row-2 {
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  position: absolute;
   background-color: white;
-  margin-top: 200px;
-}
-.tamaño {
-  width: 50%;
+  width: 86%;
+  height: 50px;
 }

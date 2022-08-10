@@ -33,8 +33,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MainModule } from 'src/app/templates/main2022/main.module';
 import { ContentComponent } from './pages/content/content.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
+import { QuestionsComponent } from './components/questions/questions.component';
 @NgModule({
-  declarations: [CourseComponent, DashboardComponent, ContentComponent, NavigationMenuComponent],
+  declarations: [CourseComponent, DashboardComponent, ContentComponent, NavigationMenuComponent, QuestionsComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
