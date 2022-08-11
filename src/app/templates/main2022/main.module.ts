@@ -10,14 +10,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 // Components
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [HeaderComponent, MenuComponent, DashboardComponent],
+  declarations: [HeaderComponent, MenuComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -29,9 +31,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatListModule
+
+
   ],
   providers: [],
-  exports: [HeaderComponent, MenuComponent, DashboardComponent]
+  exports: [HeaderComponent, MenuComponent]
 })
 export class MainModule { }

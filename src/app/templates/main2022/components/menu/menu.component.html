@@ -27,15 +27,16 @@
   </div>
 
   <div>
-    <a
+    <button
       mat-mini-fab
       color="primary"
       [class.mat-elevation-z0]="true"
       ngxTippy
       [tippyProps]="calendarProps"
+      (click)="openCalendar()"
     >
       <mat-icon>calendar_month</mat-icon>
-    </a>
+    </button>
   </div>
 
   <div>

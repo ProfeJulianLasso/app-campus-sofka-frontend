@@ -1,15 +1,63 @@
 .row {
-  display: flex;
-  background-color: aqua;
-  width: 100%;
+  position: absolute;
+  background-color: white;
+  width: 86%;
+  height: 100px;
 }
-.row-2 {
+.flex {
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: white;
-  margin-top: 200px;
+  padding: 15px;
+  width: 98%;
+  margin-top: 30px;
+  .content {
+    width: 55%;
+    justify-content: center;
+  }
+  .date {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .info {
+      p {
+        font-size: 300px;
+      }
+    }
+  }
 }
-.tamaño {
-  width: 50%;
+
+.flex2 {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 15px;
+  width: 98%;
+  margin-top: 30px;
+  .content {
+    width: 55%;
+  }
+  .date {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .info {
+      width: 90%;
+    }
+    .card {
+      margin-top: 10px;
+      background-color: white;
+      -webkit-box-shadow: 10px -5px 55px -12px rgba(171, 171, 171, 1);
+      -moz-box-shadow: 10px -5px 55px -12px rgba(171, 171, 171, 1);
+      box-shadow: 10px -5px 55px -12px rgba(171, 171, 171, 1);
+    }
+    .list-task {
+      overflow-y: scroll;
+      height: 100px;
+      background-color: #ededed;
+      margin-top: 30px;
+    }
+  }
 }
