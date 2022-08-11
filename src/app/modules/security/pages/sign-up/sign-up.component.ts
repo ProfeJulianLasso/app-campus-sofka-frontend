@@ -22,8 +22,9 @@ export class SignUpComponent implements OnInit {
   formsingUp: FormGroup = this.fb.group({
     name: ["", [Validators.required, Validators.minLength(8)]],
     email: ["", [Validators.required, Validators.email]],
-    password: ["", [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/), Validators.maxLength(8)]],
-    passwordConfirm: ["", Validators.required],
+    password: ["", [Validators.required, Validators.minLength(8), Validators.pattern(environment.passwordValidate), Validators.maxLength(8)]],
+    passwordConfirm: ["", [Validators.required, Validators.minLength(8), Validators.pattern(environment.passwordValidate), Validators.maxLength(8)]],
+    checked: [null, Validators.required],
 
   },
     CustomValidators.mustMatch('password', 'passwordConfirm') // insert here
@@ -32,8 +33,8 @@ export class SignUpComponent implements OnInit {
 
 
 
-  get f() {
-    return this.formsingUp.controls;
+  f(fiel: string) {
+    return this.formsingUp.controls?.[fiel].errors
   }
 
   fieldValidator(fiel: string) {
@@ -41,17 +42,17 @@ export class SignUpComponent implements OnInit {
   }
 
   registerAcoount() {
-    this.submitted = true;
+    const user = this.formsingUp.getRawValue();
     if (this.formsingUp.invalid) {
+      console.log("no paso")
       return;
     }
-    const user = this.formsingUp.getRawValue();
-    this.authService.SignUp(user.name, user.email, user.password).then(() => this.toastr.success(
-      'Le enviamos un correo para la validacion de tu cuenta',
-      'Registro exitoso'
-    )).catch(() => this.toastr.warning(
-      'Ocurrio un error con el registro',
-      'Registro fallido'));
+    this.authService.SignUp(user.name, user.email, user.password).then(() =>
+      this.toastr.success(
+        'Le enviamos un correo para la validacion de tu cuenta',
+        'Registro exitoso'
+      )).catch(() => this.toastr.warning(
+        'Ocurrio un error con el registro',
+        'Registro fallido'));
   }
-
 }

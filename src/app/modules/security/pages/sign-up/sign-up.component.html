@@ -50,27 +50,42 @@
   </div>
   <div class="inputs">
     <mat-form-field appearance="fill">
-      <mat-label>Repite tu contraseña</mat-label>
+      <mat-label>Repite contraseña</mat-label>
       <input
         matInput
         #passwordConfirm
         formControlName="passwordConfirm"
-        [type]="hide2 ? 'password' : 'text'"
+        [type]="hide ? 'password' : 'text'"
         maxlength="8"
       />
       <button
         mat-icon-button
         matSuffix
-        (click)="hide2 = !hide2"
-        [attr.aria-label]="'Hide confirm'"
-        [attr.aria-pressed]="hide2"
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide passwordConfirm'"
+        [attr.aria-pressed]="hide"
       >
-        <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
+
+      <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
+        'error minimo 8 caracteres y una mayuscula'
+      }}</mat-error>
+      <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
+        'error minimo 8 caracteres y una mayuscula'
+      }}</mat-error>
+      <!--<div *ngIf="f.confirmPassword.errors.mustMatch">
+        Confirm Password is required
+      </div>-->
     </mat-form-field>
   </div>
   <div class="inputs">
-    <h2>Aqui el validador</h2>
+    <section class="example-section">
+      <mat-checkbox class="example-margin" #checked
+        >Acepta el tratamiento de datos</mat-checkbox
+      >
+    </section>
+    <mat-error *ngIf="fieldValidator('checked')">{{ 'Requerido' }}</mat-error>
   </div>
 
   <div class="inputs">

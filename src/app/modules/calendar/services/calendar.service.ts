@@ -14,8 +14,8 @@ export class CalendarService {
   }
   constructor() { }
 
-  getCalendarId(id: String): Observable<Calendar[]> {
+  /*getCalendarId(id: String): Observable<Calendar[]> {
     
-   }
+   }*/
 
 }

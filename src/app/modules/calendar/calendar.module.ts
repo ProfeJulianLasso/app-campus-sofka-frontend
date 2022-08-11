@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MainCalendarComponent } from './pages/main-calendar/main-calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // Routing
 
 // Pipes
@@ -29,7 +30,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatListModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    HttpClientModule],
+    HttpClientModule,
+    MatNativeDateModule
+  ],
   exports: [MainCalendarComponent]
 })
 export class CalendarModule { }

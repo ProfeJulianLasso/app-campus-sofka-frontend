@@ -42,8 +42,8 @@ export class SignInComponent implements OnInit {
   validateStatus() {
     if (this.authService.status_user) {
       setTimeout(() => {
-        this.router.navigate(["/dashboard"])
-      }, 2000);
+        this.router.navigate(["/course"])
+      }, 1000);
     }
   }
 }
