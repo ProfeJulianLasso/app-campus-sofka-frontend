@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   openModal() {
     this.dialog.open(ModalComponent, {
       width: '400px',
-      height: '300px',
+      height: '350px',
       disableClose: true,
       autoFocus: false
     });

@@ -19,6 +19,7 @@ export class ModalComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.authService.getUserLogged())
   }
   logoutUser() {
     this.authService.logout();

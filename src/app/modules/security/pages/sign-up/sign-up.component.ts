@@ -24,7 +24,7 @@ export class SignUpComponent implements OnInit {
     email: ["", [Validators.required, Validators.email]],
     password: ["", [Validators.required, Validators.minLength(8), Validators.pattern(environment.passwordValidate), Validators.maxLength(8)]],
     passwordConfirm: ["", [Validators.required, Validators.minLength(8), Validators.pattern(environment.passwordValidate), Validators.maxLength(8)]],
-    checked: [null, Validators.required],
+    checked: [false, Validators.required],
 
   },
     CustomValidators.mustMatch('password', 'passwordConfirm') // insert here
@@ -44,15 +44,17 @@ export class SignUpComponent implements OnInit {
   registerAcoount() {
     const user = this.formsingUp.getRawValue();
     if (this.formsingUp.invalid) {
-      console.log("no paso")
       return;
     }
-    this.authService.SignUp(user.name, user.email, user.password).then(() =>
+    this.authService.SignUp(user.name, user.email, user.password).then(() => {
+      this.formsingUp.reset();
       this.toastr.success(
         'Le enviamos un correo para la validacion de tu cuenta',
         'Registro exitoso'
-      )).catch(() => this.toastr.warning(
-        'Ocurrio un error con el registro',
-        'Registro fallido'));
+
+      )
+    }).catch(() => this.toastr.warning(
+      'Ocurrio un error con el registro',
+      'Registro fallido'));
   }
 }

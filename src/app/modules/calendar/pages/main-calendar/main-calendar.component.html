@@ -1,7 +1,8 @@
 <div class="info">
   <div class="dake-picker">
     <mat-card class="demo-inline-calendar-card">
-      <mat-calendar [(selected)]="selected"></mat-calendar>
+      <mat-calendar #date [(selected)]="selected"></mat-calendar>
+      <button (click)="taskSearch()">Buscar</button>
     </mat-card>
   </div>
 
