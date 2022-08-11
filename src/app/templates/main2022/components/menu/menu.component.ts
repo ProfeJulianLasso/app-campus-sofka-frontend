@@ -23,6 +23,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void { }
 
   openCalendar(): void {
-    this.MenuService.changeFlag(true)
+    this.MenuService.changueCalendar(true)
   }
 }

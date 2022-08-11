@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from 'src/app/modules/security/components/modal/modal.component';
+ModalComponent
 @Component({
   selector: 'sofka-header',
   templateUrl: './header.component.html',
@@ -7,7 +10,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   @Input() name?: string;
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void { }
 
@@ -19,5 +22,14 @@ export class HeaderComponent implements OnInit {
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+  openModal() {
+    this.dialog.open(ModalComponent, {
+      width: '400px',
+      height: '300px',
+      disableClose: true,
+      autoFocus: false
+    });
+
   }
 }

@@ -19,8 +19,6 @@ import { SecurityRoutingModule } from './security-routing.module';
 
 // Guards
 
-// Components
-import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 // Pages
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -29,13 +27,14 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     SignUpComponent,
     SignInComponent,
-    LoginModalComponent,
     AuthComponent,
-    PasswordRecoveryComponent
+    PasswordRecoveryComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +50,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatToolbarModule
   ],
-  exports: [LoginModalComponent]
 })
 export class SecurityModule { }

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 // Material
-
+import { MatDialogModule } from '@angular/material/dialog';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
@@ -13,7 +13,6 @@ import { AppComponent } from './templates/main2022/components/main/app.component
 
 // Modules
 import { MainModule } from './templates/main2022/main.module';
-import { IndexComponent } from './pages/index/index.component';
 import { SecurityModule } from './modules/security/security.module';
 
 // Components
@@ -23,7 +22,7 @@ import { SecurityModule } from './modules/security/security.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 @NgModule({
-  declarations: [AppComponent, IndexComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     MainModule,
@@ -34,7 +33,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
-  exports: [MainModule],
+  exports: [MainModule, MatDialogModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

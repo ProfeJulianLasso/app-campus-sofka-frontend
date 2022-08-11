@@ -7,19 +7,15 @@
       <input placeholder="Buscador de cursos" class="prueba" />
     </div>
   </div>
-  <button type="button" class="profile" matRipple>
+
+  <button
+    type="button"
+    class="profile"
+    matRipple
+    mat-raised-button
+    (click)="openModal()"
+  >
     <img src="./assets/images/usuario.webp" alt="Usuario" />
   </button>
-  <ul class="nav">
-    <li>
-      <a href="">Nombre User</a>
-      <ul>
-        <li><a href="">Submenu1</a></li>
-        <li><a href="">Submenu2</a></li>
-        <li><a href="">Submenu3</a></li>
-        <li><a href="">Salir</a></li>
-      </ul>
-    </li>
-  </ul>
 </mat-toolbar>
 <hr style="color: #f1f1f1; width: 95%" />

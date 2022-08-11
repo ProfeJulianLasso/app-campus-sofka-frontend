@@ -116,9 +116,8 @@ export class AuthService {
     );
     const userData: User = {
       uid: user.uid,
-      name: name,
       email: user.email,
-      displayName: user.displayName,
+      displayName: name,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     };
@@ -187,4 +186,9 @@ export class AuthService {
 
     return of(false);
   }
+
+  searchUser() {
+
+  }
+
 }
