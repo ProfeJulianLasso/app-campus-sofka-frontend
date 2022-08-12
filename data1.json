@@ -1,47 +1,4 @@
-{
-    "calendario": [{
-            "id": 1,
-            "datetime": "2022-03-02 12:30:00",
-            "title": "Ejemplo 1",
-            "url": "dirección de la sala",
-            "id_user": "12345"
-        },
-        {
-            "id": 1,
-            "datetime": "2022-03-02 12:30:00",
-            "title": "Ejemplo 2",
-            "url": "dirección de la sala",
-            "id_user": "12345"
-        },
-        {
-            "id": "2",
-            "datetime": "2022-03-02 12:30:00",
-            "title": "Ejemplo 2",
-            "url": "dirección de la sala",
-            "id_user": "12345"
-        }
-    ],
-
-    "preguntas": [{
-        "id": 1,
-        "question": "Diferencia entre angular y react",
-        "reply": [{
-                "replys": "Angular es un un framewor"
-            },
-            {
-                "replys": "react es una libreria"
-            }
-        ]
-    }]
-}
-
-
-
-
-
---levels
-
-    [{
+[{
         "id": "3d68b076-602d-4cc1-b621-2bdfb442b1c6",
         "completed": false,
         "badge": "direción de la imagen",
@@ -49,7 +6,7 @@
             "88df7dbc-bad0-4ab3-8898-4034dc349104",
             "32974f1b-59ea-40c8-b505-a64639f73608"
         ]
-    }
+    },
 
     {
         "id": "2dc007cf-cd34-4f67-80e4-c40814f5d35f",
@@ -60,7 +17,7 @@
             "f5a94e88-d869-4e5a-9c9a-b3e50d849b40",
             "8aa0d0a2-66f9-47a6-8abf-cd6ed0c6991c"
         ]
-    }
+    },
 
     {
         "id": "1e8965cc-a2fe-43cb-b60d-84b8b6179742",

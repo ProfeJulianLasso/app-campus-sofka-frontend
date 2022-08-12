@@ -1,14 +1,15 @@
-<div class="container">
-    <div class="principal g x-y-center">
-        <b>t</b>
-        <div class="primero absoluto d x-y-center">
+<div class="container" *ngFor=" let course of listCoursesTopics">
+    <div id="principal" [ngClass]="this.styles_content ? 'principal g x-y-center' : 'principal2 g x-y-center'">
+        <b></b>
+        <div class="primero d x-y-center">
             <b class="themaUne">T1</b>
         </div>
-        <div class="segundo absoluto d x-y-center">
+        <div class="segundo  d x-y-center">
             <b>T2</b>
         </div>
-        <div class="tercero absoluto d x-y-center">
+        <div class="tercero  d x-y-center">
             <b>T3</b>
         </div>
     </div>
+
 </div>

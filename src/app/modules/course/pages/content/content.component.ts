@@ -7,7 +7,7 @@ import { MenuService } from 'src/app/templates/main2022/services/menu.service';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  styles_content: boolean
+  styles_content: boolean;
   constructor(private menuService: MenuService) {
     this.styles_content = menuService.getCalendar();
   }
@@ -24,6 +24,4 @@ export class ContentComponent implements OnInit {
       }
     });
   }
-
-
 }

@@ -1,25 +1,31 @@
 .container {
-    width: 90%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1em;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(3, 100px);
+    height: 150px;
+    width: 100px;
+    grid-gap: 10px;
 }
 
 .principal {
     position: relative;
     background-image: url("../../../../../assets/images/prueba.jpg");
     background-size: cover;
+    top: 5px;
+    left: 50%;
+}
+
+.principal2 {
+    background-image: url("../../../../../assets/images/prueba.jpg");
+    background-size: cover;
+    filter: grayscale(1);
     top: 150px;
     left: 300px;
 }
 
-.absoluto {
-    position: absolute;
-}
-
 .primero {
     background-color: aquamarine;
-    top: 75px;
+    top: 79px;
     left: -10px;
 }
 

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
-import { NgxDocViewerModule } from 'ngx-doc-viewer';
 // Material
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';

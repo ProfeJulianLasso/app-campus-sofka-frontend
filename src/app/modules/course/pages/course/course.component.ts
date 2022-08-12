@@ -11,7 +11,9 @@ export class CourseComponent implements OnInit {
   listUsers: Users[] = [];
   page?: number;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {
+    this.saveLocalStorage();
+  }
 
   ngOnInit(): void {
     this.courseAll();
@@ -19,8 +21,8 @@ export class CourseComponent implements OnInit {
 
   /**
    * [
-   *  Metodo courseAll(), se optiene todos los cursos
-   *  dashboardService.getCourses(), suscribe la data y la guardo
+   *  Metodo courseAll(), se optiene el usuario con sus cursos
+   *  dashboardService.getCoursesUser(), suscribe la data y la guardo
    *  this.listCourses para mostrarla en la vista
    * ]
    * @version [1,0.0]
@@ -33,11 +35,10 @@ export class CourseComponent implements OnInit {
     this.dashboardService.getCoursesUser().subscribe(
       (data) => {
         this.listUsers = data;
-        console.log(this.listUsers + 'yefer users');
         this.listUsers.forEach((userCourse) => {
           userCourse.courses.forEach((course) => {
             this.listCourses.push(course);
-            console.log(this.listCourses + 'yefer cursos');
+            localStorage.setItem('course', JSON.stringify(this.listCourses));
           });
         });
       },
@@ -45,5 +46,10 @@ export class CourseComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  saveLocalStorage() {
+    const dataCourses = this.listCourses;
+    localStorage.setItem('course', JSON.stringify(dataCourses));
   }
 }

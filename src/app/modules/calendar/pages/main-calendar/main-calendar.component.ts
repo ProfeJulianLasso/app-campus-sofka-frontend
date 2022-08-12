@@ -11,12 +11,12 @@ export class MainCalendarComponent implements OnInit {
   selected?: Date;
   calendar: Calendar[];
   constructor(private calendarService: CalendarService) {
-    this.calendar = []
+    this.calendar = [];
   }
 
   ngOnInit(): void {
     this.taskSearch();
-    console.log(this.calendar)
+    console.log(this.calendar);
   }
 
   taskSearch() {
