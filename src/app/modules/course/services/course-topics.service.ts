@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Question } from '../interfaces/IQuestion';
+import { Step } from '../interfaces/IStep';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseTopicsService {
-  url = '/api/courses/';
-  private url2 = "http://localhost:3000/question"
+  private url = '/api/stepfortopic/';
+  private ulrstep = '/api/steps';
+  private ulrsave = '/api/stepfortopic';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -17,12 +20,15 @@ export class CourseTopicsService {
   getCoursesTopics(): Observable<any> {
     return this.http.get(this.url);
   }
+  getStep(): Observable<Step[]> {
+    return this.http.get<Step[]>(this.ulrstep);
+  }
 
-  getQuestion(): Observable<Question[]> {
-    return this.http.get<Question[]>(this.url2);
+  getQuestion(step: string, id: string | null): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.url}/${step}/${id}`);
   }
 
   postQuestion(question: Question): Observable<Question> {
-    return this.http.put<Question>(`${this.url2}/${question.id}`, question, this.httpOptions);
+    return this.http.post<Question>(`${this.ulrsave}`, question, this.httpOptions);
   }
 }

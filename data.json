@@ -40,7 +40,7 @@
     {
       "id": "8aa5f926-32f8-4abe-b805-fe8d99441624",
       "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
-      "isStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
+      "idStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
       "content": "Pregunta 1",
       "title": "",
       "type": "",
@@ -58,28 +58,74 @@
     {
       "id": "c3936be2-502a-4cdc-bb3f-52172beea61a",
       "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
-      "isStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
+      "idStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
       "content": "Pregunta 2",
       "title": "",
       "type": "",
       "send": false,
       "Qualified": false,
-      "answers": [
-        "Esta es la pregunta 3"
-      ]
+      "answers": ["Esta es la pregunta 3"]
     },
     {
       "id": "20693598-6cf2-40c1-8f08-7e3d192bbacf",
       "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
-      "isStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
+      "idStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
       "content": "Pregunta 3",
       "title": "",
       "type": "",
       "send": false,
       "Qualified": false,
-      "answers": [
-        "Ejemplo 3 asdas asd "
-      ]
+      "answers": ["Ejemplo 3 asdas asd "]
+    }
+  ],
+  "lessson": [
+    {
+      "id": "45b3104a-05f1-4a68-a04b-1160105f98c1",
+      "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
+      "idStep": "44ec3316-e88d-492e-b580-7481d109cb86",
+      "content": "Dirección del recurso o contenido leccion 1",
+      "title": "Titulo de la lección 1",
+      "type": "PDF",
+      "send": false,
+      "Qualified": false,
+      "feedBack": "",
+      "answers": []
+    },
+    {
+      "id": "0c41fc4f-033b-49c5-83c1-25aeba45bded",
+      "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
+      "idStep": "44ec3316-e88d-492e-b580-7481d109cb86",
+      "content": "Dirección del recurso o contenido leccion 2",
+      "title": "Titulo de la lección 2",
+      "type": "EXCEL",
+      "send": false,
+      "Qualified": false,
+      "feedBack": "",
+      "answers": []
+    },
+    {
+      "id": "b0ba165a-ee1d-4420-97fb-9aa7962ba2cc",
+      "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
+      "idStep": "44ec3316-e88d-492e-b580-7481d109cb86",
+      "content": "Dirección del recurso o contenido leccion 3",
+      "title": "Titulo de la lección 3",
+      "type": "PDFD",
+      "send": false,
+      "Qualified": false,
+      "feedBack": "",
+      "answers": []
+    },
+    {
+      "id": "b23f476d-085b-4ede-ad04-322af303da12",
+      "idTopic": "1b0865b6-368b-4b6b-9bef-58dc8b1b5d0f",
+      "idStep": "44ec3316-e88d-492e-b580-7481d109cb86",
+      "content": "Dirección del recurso o contenido leccion 1",
+      "title": "Titulo de la lección 1 tema 2",
+      "type": "EXCEL",
+      "send": false,
+      "Qualified": false,
+      "feedBack": "",
+      "answers": []
     }
   ]
 }

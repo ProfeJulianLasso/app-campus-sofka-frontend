@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Question } from '../../interfaces/IQuestion';
 import { CourseTopicsService } from '../../services/course-topics.service';
 import Swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sofka-questions',
   templateUrl: './questions.component.html',
@@ -12,11 +13,15 @@ export class QuestionsComponent implements OnInit {
   questions: Question[];
   visibility: boolean;
   position: number;
-
-  constructor(private fb: FormBuilder, private courseService: CourseTopicsService) {
+  size: number = 0;
+  constructor(private fb: FormBuilder, private courseService: CourseTopicsService, private router: ActivatedRoute) {
     this.questions = [];
     this.visibility = false;
     this.position = this.value;
+    setTimeout(() => {
+      this.size = this.sizeQuestion;
+    }, 2000);
+
   }
   frmReply: FormGroup = this.fb.group({
     reply: ["", [Validators.required, Validators.minLength(20), Validators.maxLength(100)]]
@@ -31,10 +36,13 @@ export class QuestionsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getQuestion()
+
   }
 
   getQuestion() {
-    this.courseService.getQuestion().subscribe(res => {
+    const idReceipt = this.router.snapshot.params['id'];
+    const idTopic = localStorage.getItem("idTopic");
+    this.courseService.getQuestion(idReceipt, idTopic).subscribe(res => {
       this.questions.push(...res);
     })
   }
@@ -53,7 +61,7 @@ export class QuestionsComponent implements OnInit {
       if (result.isConfirmed) {
         const reply = this.frmReply.value.reply;
         question.answers.push(reply)
-        this.courseService.postQuestion(question).subscribe(() => alert("modificado"))
+        this.courseService.postQuestion(question).subscribe();
         this.visibility = true;
         this.frmReply.reset();
         Object.keys(this.frmReply.controls).forEach(key => {
@@ -71,13 +79,25 @@ export class QuestionsComponent implements OnInit {
     return Number(value);
   }
 
+  get sizeQuestion(): number {
+    return this.questions.length;
+  }
+
   nextQuestion() {
     this.position = this.value + 1;
     this.visibility = false;
     localStorage.setItem("value", JSON.stringify(this.position));
-
+    if (this.size === this.position) {
+      Swal.fire({
+        imageUrl: 'https://cdn-icons-png.flaticon.com/512/2242/2242681.png',
+        text: "Felicitaciones has completado con exito las preguntas , pasa a la siguiente lección",
+        imageHeight: 400,
+        imageAlt: 'A tall image'
+      })
+    }
   }
-
-
-
 }
+
+
+
+

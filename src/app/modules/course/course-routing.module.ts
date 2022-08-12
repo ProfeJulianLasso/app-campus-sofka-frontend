@@ -21,10 +21,10 @@ const routes: Routes = [
         path: "course-content", component: ContentComponent,
         children: [
           {
-            path: "question", component: QuestionsComponent
+            path: "questions/:id", component: QuestionsComponent
           },
           {
-            path: "lesson", component: LessonComponent
+            path: "lessions/:id", component: LessonComponent
           }
         ]
       },

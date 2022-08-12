@@ -1,3 +1,20 @@
+<div class="menu">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>more_vert</mat-icon>Menu
+  </button>
+  <mat-menu #menu="matMenu">
+    <div *ngFor="let item of step">
+      <button mat-menu-item (click)="router(item.id, item.name)">
+        <mat-icon>dialpad</mat-icon>
+        <span>{{ item.name }}</span>
+      </button>
+    </div>
+  </mat-menu>
+</div>
 <div [ngClass]="this.styles_content ? 'flex2' : 'flex'">
   <div class="content">
     <div class="size">
