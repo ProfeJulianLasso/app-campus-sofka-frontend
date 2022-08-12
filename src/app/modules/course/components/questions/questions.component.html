@@ -1,10 +1,11 @@
-<div *ngFor="let question of questions">
-  <mat-card class="card">
+<div *ngFor="let question of questions; let i = index">
+  <mat-card class="card" *ngIf="i === position">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
     </mat-card-header>
     <mat-card-content>
-      <h2 class="title">{{ question.question }}</h2>
+      <h2 class="title">¿{{ question.content }}?</h2>
+
       <form [formGroup]="frmReply">
         <mat-form-field appearance="fill">
           <mat-label>Ingresa tu respuesta</mat-label>
@@ -24,14 +25,30 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button class="btn-reply" (click)="answer()">Responder</button>
-      <button mat-button class="btn-next" *ngIf="visibility">Siguiente</button>
+      <button
+        mat-button
+        [ngClass]="frmReply.invalid ? 'btn-reply2' : 'btn-reply '"
+        (click)="answer(question)"
+        [disabled]="frmReply.invalid"
+      >
+        Responder
+      </button>
+      <button
+        mat-button
+        class="btn-next"
+        *ngIf="visibility"
+        (click)="nextQuestion()"
+      >
+        Siguiente
+      </button>
     </mat-card-actions>
   </mat-card>
   <br />
-  <div class="reply" *ngIf="visibility">
-    <mat-list role="list" *ngFor="let replys of question.reply">
-      <mat-list-item role="listitem">{{ replys.replys }} </mat-list-item>
+  <div class="reply" *ngIf="visibility && i === position">
+    <mat-list role="list" *ngFor="let anserw of question.answers">
+      <mat-list-item role="listitem">
+        {{ anserw }}
+      </mat-list-item>
       <hr />
     </mat-list>
   </div>

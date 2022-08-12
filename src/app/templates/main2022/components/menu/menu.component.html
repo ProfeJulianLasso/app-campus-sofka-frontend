@@ -3,15 +3,16 @@
     <img src="../../../../../assets/images/logo-pequeño.png" class="logo" />
   </div>
   <div>
-    <a
+    <button
       mat-mini-fab
       color="primary"
       [class.mat-elevation-z0]="true"
       ngxTippy
       [tippyProps]="coursesProps"
+      (click)="course()"
     >
       <mat-icon>school</mat-icon>
-    </a>
+    </button>
   </div>
 
   <div>

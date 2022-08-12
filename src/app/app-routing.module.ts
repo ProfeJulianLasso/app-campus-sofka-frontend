@@ -1,6 +1,7 @@
 // Libraries
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidateTokenGuard } from './modules/security/guards/validate-token.guard';
 
 // Guards
 
@@ -15,7 +16,10 @@ const routes: Routes = [
   {
     path: 'course',
     loadChildren: () =>
-      import('./modules/course/course.module').then((m) => m.CourseModule)
+      import('./modules/course/course.module').then((m) => m.CourseModule),
+    canLoad: [ValidateTokenGuard], // prevenir la carga de un componente
+    canActivate: [ValidateTokenGuard] //previene que el usuario ingrese a una ruta en especifico
+
   },
   {
     path: 'chat',

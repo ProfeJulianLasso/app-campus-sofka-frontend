@@ -1,7 +1,7 @@
 <form
   class="form-register"
   [formGroup]="formsingUp"
-  (ngSubmit)="registerAcoount()"
+  (ngSubmit)="formsingUp.invalid ? false : registerAcoount()"
   autocomplete="off"
 >
   <h2>Registrate</h2>
@@ -9,7 +9,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Nombre completo</mat-label>
       <input matInput formControlName="name" required #name />
-      <mat-error *ngIf="fieldValidator('name')">{{
+      <mat-error *ngIf="formsingUp.get('name')?.hasError('required')">{{
         'Ingresa tu nombre completo'
       }}</mat-error>
     </mat-form-field>
@@ -18,7 +18,10 @@
     <mat-form-field appearance="fill">
       <mat-label>Correo electronico</mat-label>
       <input matInput formControlName="email" required #email />
-      <mat-error *ngIf="fieldValidator('email')">{{
+      <mat-error *ngIf="formsingUp.get('email')?.hasError('required')">{{
+        'Ingresa un correo '
+      }}</mat-error>
+      <mat-error *ngIf="formsingUp.get('email')?.hasError('email')">{{
         'Ingresa un correo valido'
       }}</mat-error>
     </mat-form-field>
@@ -43,8 +46,14 @@
         <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
 
-      <mat-error *ngIf="fieldValidator('password')">{{
-        'error minimo 8 caracteres y una mayuscula'
+      <mat-error *ngIf="formsingUp.get('password')?.hasError('minLength')">{{
+        ''
+      }}</mat-error>
+      <mat-error *ngIf="formsingUp.get('password')?.hasError('pattern')">{{
+        'La contraseña debe contener una mayuscula'
+      }}</mat-error>
+      <mat-error *ngIf="formsingUp.get('password')?.hasError('minLength')">{{
+        ''
       }}</mat-error>
     </mat-form-field>
   </div>
@@ -53,8 +62,9 @@
       <mat-label>Repite contraseña</mat-label>
       <input
         matInput
-        #passwordConfirm
-        formControlName="passwordConfirm"
+        #confirmPassword
+        [errorStateMatcher]="matcher"
+        formControlName="confirmPassword"
         [type]="hide ? 'password' : 'text'"
         maxlength="8"
       />
@@ -62,34 +72,36 @@
         mat-icon-button
         matSuffix
         (click)="hide = !hide"
-        [attr.aria-label]="'Hide passwordConfirm'"
+        [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide"
       >
         <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
 
-      <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
-        'error minimo 8 caracteres y una mayuscula'
+      <mat-error *ngIf="formsingUp.hasError('notSame')">{{
+        'Invalido'
       }}</mat-error>
-      <mat-error *ngIf="fieldValidator('passwordConfirm')">{{
-        'error minimo 8 caracteres y una mayuscula'
-      }}</mat-error>
-      <!--<div *ngIf="f.confirmPassword.errors.mustMatch">
-        Confirm Password is required
-      </div>-->
     </mat-form-field>
-  </div>
-  <div class="inputs">
-    <section class="example-section">
-      <mat-checkbox class="example-margin" #checked
-        >Acepta el tratamiento de datos</mat-checkbox
-      >
-    </section>
-    <mat-error *ngIf="fieldValidator('checked')">{{ 'Requerido' }}</mat-error>
   </div>
 
   <div class="inputs">
-    <button class="btn-registro" mat-raised-button color="primary">
+    <section class="example-section">
+      <mat-checkbox class="example-margin" formControlName="checked"
+        >Acepta el tratamiento de datos</mat-checkbox
+      >
+    </section>
+    <mat-error *ngIf="formsingUp.get('checked')?.hasError('required')">{{
+      ''
+    }}</mat-error>
+  </div>
+
+  <div class="inputs">
+    <button
+      type="submit"
+      class="btn-registro"
+      mat-raised-button
+      color="primary"
+    >
       Crear Cuenta
     </button>
   </div>

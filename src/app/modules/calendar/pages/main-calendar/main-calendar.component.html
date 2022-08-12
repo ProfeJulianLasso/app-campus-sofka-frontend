@@ -1,37 +1,23 @@
 <div class="info">
   <div class="dake-picker">
     <mat-card class="demo-inline-calendar-card">
-      <mat-calendar #date [(selected)]="selected"></mat-calendar>
-      <button (click)="taskSearch()">Buscar</button>
+      <mat-calendar (selectedChange)="captureDate($event)"></mat-calendar>
     </mat-card>
   </div>
 
-  <mat-card class="card">
+  <mat-card class="card" *ngIf="status">
     <div class="list-task">
       <mat-list role="list">
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet consectetur, adipisicing elit
+        <mat-list-item role="listitem" *ngFor="let date of calendar">
+          <div class="activities">
+            <p class="title">
+              Titulo : <span class="subtitle">{{ date.title }}</span>
+            </p>
+            <p class="title">
+              url : <span class="subtitle">{{ date.url }}</span>
+            </p>
+          </div>
         </mat-list-item>
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elitat
-        </mat-list-item>
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit</mat-list-item
-        >
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit</mat-list-item
-        >
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit</mat-list-item
-        >
-        <hr />
       </mat-list>
     </div>
   </mat-card>

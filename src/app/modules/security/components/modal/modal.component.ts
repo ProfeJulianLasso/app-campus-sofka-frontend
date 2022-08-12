@@ -9,17 +9,21 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  user: User = {
-    uid: '',
-    email: '',
-    displayName: '',
-    photoURL: '',
-    emailVerified: false
+  users: User[] = []
+  constructor(private authService: AuthService, private router: Router) {
   }
-  constructor(private authService: AuthService, private router: Router) { }
-
   ngOnInit(): void {
-    console.log(this.authService.getUserLogged())
+    this.authService.afAuth.authState.subscribe((user) => {
+      const userData: User = {
+        uid: user?.uid,
+        email: user?.email,
+        displayName: user?.displayName,
+        photoURL: user?.photoURL,
+        emailVerified: user?.emailVerified,
+      };
+
+      this.users.push(userData);
+    });
   }
   logoutUser() {
     this.authService.logout();

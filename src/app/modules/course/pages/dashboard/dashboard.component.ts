@@ -34,7 +34,6 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getCourses().subscribe(
       (data) => {
         this.listCourses = data;
-        console.log(this.listCourses + 'yefer cursos');
       },
       (error) => {
         console.log(error);

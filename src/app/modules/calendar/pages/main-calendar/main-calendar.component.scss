@@ -1,8 +1,26 @@
 .card {
   margin-top: 40px;
   height: 200px;
+  width: 100%;
   overflow-y: scroll;
 }
 .demo-inline-calendar-card {
   width: 230px;
+}
+.dake-picker {
+  display: flex;
+  justify-content: center;
+}
+.activities {
+  display: inline;
+}
+.subtitle {
+  color: #000;
+}
+.title {
+  color: #c9824f;
+  font-weight: bold;
+}
+.listitem {
+  margin-top: 5px;
 }

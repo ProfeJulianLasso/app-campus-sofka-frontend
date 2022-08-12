@@ -7,9 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CalendarService {
   constructor(private http: HttpClient) { }
-  private url = "http://localhost:3000/calendario"
-  getCalendarId(id: Number): Observable<Calendar[]> {
-    return this.http.get<Calendar[]>(`${this.url}/${id}`)
+  private url = "/api/calendar"
+  getCalendarId(date: string): Observable<Calendar[]> {
+    console.log(date);
+    return this.http.get<Calendar[]>(`${this.url}/${date}`)
   }
 
 }

@@ -10,20 +10,26 @@ import { CalendarService } from '../../services/calendar.service';
 export class MainCalendarComponent implements OnInit {
   selected?: Date;
   calendar: Calendar[];
+  date: string;
+  status: boolean;
+
   constructor(private calendarService: CalendarService) {
     this.calendar = []
+    this.date = "";
+    this.status = false;
   }
 
   ngOnInit(): void {
-    this.taskSearch();
-    console.log(this.calendar)
   }
-
-  taskSearch() {
-    this.calendarService.getCalendarId(1).subscribe(res => {
+  captureDate(event: Date): void {
+    this.status = true;
+    this.date = event.getFullYear() + "-" + (event.getMonth() + 1) + "-" + event.getDate();
+    this.calendarService.getCalendarId(this.date).subscribe(res => {
       console.log(res)
       this.calendar.push(...res);
     })
   }
+
+
 
 }

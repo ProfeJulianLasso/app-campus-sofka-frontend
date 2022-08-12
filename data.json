@@ -22,7 +22,6 @@
       "id_user": "12345"
     }
   ],
-
   "preguntas": [
     {
       "id": 1,
@@ -34,6 +33,52 @@
         {
           "replys": "react es una libreria"
         }
+      ]
+    }
+  ],
+  "question": [
+    {
+      "id": "8aa5f926-32f8-4abe-b805-fe8d99441624",
+      "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
+      "isStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
+      "content": "Pregunta 1",
+      "title": "",
+      "type": "",
+      "send": false,
+      "Qualified": false,
+      "answers": [
+        "Hola mundo",
+        "Adios Mundo",
+        "Esta es la primera pregunta",
+        "Esta es otro prueba de este ejemplo",
+        "Este es la prueba funcional",
+        "Prueba de oro este pregunta"
+      ]
+    },
+    {
+      "id": "c3936be2-502a-4cdc-bb3f-52172beea61a",
+      "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
+      "isStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
+      "content": "Pregunta 2",
+      "title": "",
+      "type": "",
+      "send": false,
+      "Qualified": false,
+      "answers": [
+        "Esta es la pregunta 3"
+      ]
+    },
+    {
+      "id": "20693598-6cf2-40c1-8f08-7e3d192bbacf",
+      "idTopic": "d60858d1-60fe-4156-9d10-206bbb9e2ab1",
+      "isStep": "bf30eded-7749-4a50-bf38-e6ade17d2626",
+      "content": "Pregunta 3",
+      "title": "",
+      "type": "",
+      "send": false,
+      "Qualified": false,
+      "answers": [
+        "Ejemplo 3 asdas asd "
       ]
     }
   ]

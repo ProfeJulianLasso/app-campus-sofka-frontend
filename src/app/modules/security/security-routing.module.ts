@@ -28,10 +28,7 @@ const routes: Routes = [
         path: 'password',
         component: PasswordRecoveryComponent
       },
-      {
-        path: '**',
-        redirectTo: 'course'
-      }
+
     ]
   }
 ];

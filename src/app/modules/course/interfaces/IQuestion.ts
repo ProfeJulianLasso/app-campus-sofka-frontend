@@ -1,9 +1,16 @@
 export interface Question {
     id: string,
-    question: string,
-    reply: Reply[]
+    idTopic: string,
+    isStep: string,
+    content: string,
+    title: string,
+    type: string,
+    send: boolean,
+    Qualified: boolean,
+    answers: string[]
 }
 
-export interface Reply {
-    replys: string;
-}
+
+
+
+

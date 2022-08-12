@@ -144,15 +144,7 @@ export class AuthService {
 
   }
 
-  /**
-   * metodo que retonar el usuario logeado
-   * @returns usuario logeado
-   */
-  getUserLogged() {
-    this.afAuth.authState.subscribe((user) =>
-      console.log(user)
-    );
-  }
+
   /**
    * metodo para cerrar la sesion y eliminar la sesion de localstora
    */

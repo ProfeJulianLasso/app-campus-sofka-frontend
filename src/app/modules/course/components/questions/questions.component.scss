@@ -8,6 +8,8 @@ mat-form-field {
 }
 .title {
   text-align: center;
+  text-transform: uppercase;
+  color: #c9824f;
 }
 .reply {
   overflow-y: scroll;
@@ -36,6 +38,10 @@ mat-card {
 }
 .btn-reply {
   background-color: #2c3587;
+  color: white;
+}
+.btn-reply2 {
+  background-color: #ededed;
   color: white;
 }
 .btn-next {
