@@ -18,8 +18,12 @@ export class ContentComponent implements OnInit {
         this.styles_content = flag;
       }
     });
+    this.menuService.flagCalendarChangue.subscribe({
+      next: (flag: boolean) => {
+        this.styles_content = flag;
+      }
+    });
   }
-
 
 
 }

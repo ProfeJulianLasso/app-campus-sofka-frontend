@@ -30,5 +30,6 @@ export class HeaderComponent implements OnInit {
       disableClose: true,
       autoFocus: false
     });
+
   }
 }

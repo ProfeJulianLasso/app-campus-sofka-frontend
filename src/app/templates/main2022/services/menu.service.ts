@@ -7,7 +7,7 @@ export class MenuService {
   private flag: boolean;
   private flagCalendar: boolean;
   flagChanged: EventEmitter<boolean>;
-  flagCalendarChangue: EventEmitter<boolean>;
+  flagCalendarChangue: EventEmitter<boolean>
   constructor() {
     this.flag = false;
     this.flagCalendar = false;

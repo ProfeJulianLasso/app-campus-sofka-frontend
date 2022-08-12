@@ -11,7 +11,7 @@ export class CourseComponent implements OnInit {
   listUsers: Users[] = [];
   page?: number;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.courseAll();
