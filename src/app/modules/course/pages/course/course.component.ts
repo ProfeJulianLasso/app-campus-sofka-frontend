@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../../templates/main2022/services/dashboard.service';
 import { Course } from '../../../security/interfaces/ICourse';
-
+import { Users } from 'src/app/modules/notification/interfaces/IUsers';
 @Component({
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
   listCourses: Course[] = [];
+  listUsers: Users[] = [];
   page?: number;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
     this.courseAll();
@@ -29,10 +30,16 @@ export class CourseComponent implements OnInit {
    *
    */
   courseAll() {
-    this.dashboardService.getCourses().subscribe(
+    this.dashboardService.getCoursesUser().subscribe(
       (data) => {
-        this.listCourses = data;
-        console.log(this.listCourses + 'yefer cursos');
+        this.listUsers = data;
+        console.log(this.listUsers + 'yefer users');
+        this.listUsers.forEach((userCourse) => {
+          userCourse.courses.forEach((course) => {
+            this.listCourses.push(course);
+            console.log(this.listCourses + 'yefer cursos');
+          });
+        });
       },
       (error) => {
         console.log(error);

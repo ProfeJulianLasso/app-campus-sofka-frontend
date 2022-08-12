@@ -1,18 +1,36 @@
 {
-  "calendario": [
-    {
-      "id": "1",
-      "datetime": "2022-03-02 12:30:00",
-      "title": "Ejemplo 1",
-      "url": "dirección de la sala",
-      "id_user": "12345"
-    },
-    {
-      "id": "2",
-      "datetime": "2022-03-02 12:30:00",
-      "title": "Ejemplo 2",
-      "url": "dirección de la sala",
-      "id_user": "12345"
-    }
-  ]
+    "calendario": [{
+            "id": 1,
+            "datetime": "2022-03-02 12:30:00",
+            "title": "Ejemplo 1",
+            "url": "dirección de la sala",
+            "id_user": "12345"
+        },
+        {
+            "id": 1,
+            "datetime": "2022-03-02 12:30:00",
+            "title": "Ejemplo 2",
+            "url": "dirección de la sala",
+            "id_user": "12345"
+        },
+        {
+            "id": "2",
+            "datetime": "2022-03-02 12:30:00",
+            "title": "Ejemplo 2",
+            "url": "dirección de la sala",
+            "id_user": "12345"
+        }
+    ],
+
+    "preguntas": [{
+        "id": 1,
+        "question": "Diferencia entre angular y react",
+        "reply": [{
+                "replys": "Angular es un un framewor"
+            },
+            {
+                "replys": "react es una libreria"
+            }
+        ]
+    }]
 }

@@ -19,6 +19,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 // Routing
 import { CourseRoutingModule } from './course-routing.module';
+import { CourseTopicsComponent } from './pages/course-topics/course-topics.component'; 
 
 // Pipes
 
@@ -39,7 +40,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { CalendarModule } from '../calendar/calendar.module';
 @NgModule({
-  declarations: [CourseComponent, DashboardComponent, ContentComponent, NavigationMenuComponent, QuestionsComponent, LessonComponent],
+  declarations: [
+    CourseComponent,
+    DashboardComponent,
+    ContentComponent,
+    NavigationMenuComponent,
+    QuestionsComponent,
+    LessonComponent,
+    CourseTopicsComponent
+  ],
   imports: [
     CommonModule,
     CourseRoutingModule,

@@ -1,37 +1,30 @@
 <div class="info">
-  <div class="dake-picker">
-    <mat-card class="demo-inline-calendar-card">
-      <mat-calendar [(selected)]="selected"></mat-calendar>
-    </mat-card>
-  </div>
-
-  <mat-card class="card">
-    <div class="list-task">
-      <mat-list role="list">
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet consectetur, adipisicing elit
-        </mat-list-item>
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elitat
-        </mat-list-item>
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit</mat-list-item
-        >
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit</mat-list-item
-        >
-        <hr />
-        <mat-list-item role="listitem"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit</mat-list-item
-        >
-        <hr />
-      </mat-list>
+    <div class="dake-picker">
+        <mat-card class="demo-inline-calendar-card">
+            <mat-calendar #date [(selected)]="selected"></mat-calendar>
+            <button (click)="taskSearch()">Buscar</button>
+        </mat-card>
     </div>
-  </mat-card>
+
+    <mat-card class="card">
+        <div class="list-task">
+            <mat-list role="list">
+                <mat-list-item role="listitem">Lorem ipsum dolor sit amet consectetur, adipisicing elit
+                </mat-list-item>
+                <hr />
+                <mat-list-item role="listitem">Lorem ipsum dolor sit amet consectetur adipisicing elitat
+                </mat-list-item>
+                <hr />
+                <mat-list-item role="listitem">Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                </mat-list-item>
+                <hr />
+                <mat-list-item role="listitem">Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                </mat-list-item>
+                <hr />
+                <mat-list-item role="listitem">Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                </mat-list-item>
+                <hr />
+            </mat-list>
+        </div>
+    </mat-card>
 </div>

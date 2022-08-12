@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Calendar } from '../../interfaces/calendar';
+import { CalendarService } from '../../services/calendar.service';
 
 @Component({
   selector: 'sofka-main-calendar',
@@ -7,13 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainCalendarComponent implements OnInit {
   selected?: Date;
-  constructor() { }
-
-  ngOnInit(): void {
+  calendar: Calendar[];
+  constructor(private calendarService: CalendarService) {
+    this.calendar = []
   }
 
-  taskSearch(id: string) {
-    console.log(id);
+  ngOnInit(): void {
+    this.taskSearch();
+    console.log(this.calendar)
+  }
+
+  taskSearch() {
+    this.calendarService.getCalendarId(1).subscribe(res => {
+      console.log(res)
+      this.calendar.push(...res);
+    })
   }
 
 }

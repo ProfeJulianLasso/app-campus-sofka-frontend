@@ -1,69 +1,29 @@
-<mat-card class="card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-  </mat-card-header>
-  <mat-card-content>
-    <h2 class="title">¿Diferencias entre angular y react?</h2>
-    <form [formGroup]="frmReply">
-      <mat-form-field appearance="fill">
-        <mat-label>Ingresa tu respuesta</mat-label>
-        <textarea
-          matInput
-          class="input-text"
-          cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="5"
-          formControlName="reply"
-        ></textarea>
-        <mat-error *ngIf="fieldValidator('reply')">{{
-          'Ingresa tu respuesta!'
-        }}</mat-error>
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button class="btn-reply">Responder</button>
-    <button mat-button class="btn-next">Siguiente</button>
-  </mat-card-actions>
-</mat-card>
-<br />
-<div class="reply">
-  <mat-list role="list">
-    <mat-list-item role="listitem"
-      >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae corrupti
-      veniam repellat quis exercitationem atque, odio provident et non officia
-      nam deleniti architecto, vel voluptates officiis ea alias incidunt
-      cupiditate.</mat-list-item
-    >
-    <hr />
-    <mat-list-item role="listitem"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-      dolorum eos cumque soluta, fugit temporibus fuga reiciendis minima quos
-      accusamus repellat doloribus molestias rerum sed saepe repudiandae, facere
-      dolorem odit?</mat-list-item
-    >
-    <hr />
-    <mat-list-item role="listitem"
-      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,
-      voluptate libero mollitia iusto facilis dignissimos enim ad sit, quibusdam
-      perspiciatis voluptates doloremque quis quaerat, praesentium aut quos
-      pariatur cupiditate dolor!</mat-list-item
-    >
-    <hr />
-    <mat-list-item role="listitem"
-      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,
-      voluptate libero mollitia iusto facilis dignissimos enim ad sit, quibusdam
-      perspiciatis voluptates doloremque quis quaerat, praesentium aut quos
-      pariatur cupiditate dolor!</mat-list-item
-    >
-    <hr />
-    <mat-list-item role="listitem"
-      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,
-      voluptate libero mollitia iusto facilis dignissimos enim ad sit, quibusdam
-      perspiciatis voluptates doloremque quis quaerat, praesentium aut quos
-      pariatur cupiditate dolor!</mat-list-item
-    >
-    <hr />
-  </mat-list>
+<div *ngFor="let question of questions">
+    <mat-card class="card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <mat-card-content>
+            <h2 class="title">{{ question.question }}</h2>
+            <form [formGroup]="frmReply">
+                <mat-form-field appearance="fill">
+                    <mat-label>Ingresa tu respuesta</mat-label>
+                    <textarea matInput class="input-text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" formControlName="reply"></textarea>
+                    <mat-error *ngIf="fieldValidator('reply')">{{ 'Ingresa tu respuesta!' }}
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button class="btn-reply" (click)="answer()">Responder</button>
+            <button mat-button class="btn-next" *ngIf="visibility">Siguiente</button>
+        </mat-card-actions>
+    </mat-card>
+    <br />
+    <div class="reply" *ngIf="visibility">
+        <mat-list role="list" *ngFor="let replys of question.reply">
+            <mat-list-item role="listitem">{{ replys.replys }} </mat-list-item>
+            <hr />
+        </mat-list>
+    </div>
 </div>

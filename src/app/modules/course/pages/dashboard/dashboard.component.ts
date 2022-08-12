@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../../templates/main2022/services/dashboard.service';
 import { Course } from '../../../security/interfaces/ICourse';
+import { Users } from '../../../notification/interfaces/IUsers';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -8,6 +9,8 @@ import { Course } from '../../../security/interfaces/ICourse';
 })
 export class DashboardComponent implements OnInit {
   listCourses: Course[] = [];
+  listUsers: Users[] = [];
+  page?: number;
   gridColumns = 3;
   name: string;
   constructor(private dashboardService: DashboardService) {
@@ -31,10 +34,15 @@ export class DashboardComponent implements OnInit {
    *
    */
   courseAll() {
-    this.dashboardService.getCourses().subscribe(
+    this.dashboardService.getCoursesUser().subscribe(
       (data) => {
-        this.listCourses = data;
-        console.log(this.listCourses + 'yefer cursos');
+        this.listUsers = data;
+        console.log(this.listUsers + 'yefer cursos');
+        this.listUsers.forEach((userCourse) => {
+          userCourse.courses.forEach((course) => {
+            this.listCourses.push(course);
+          });
+        });
       },
       (error) => {
         console.log(error);

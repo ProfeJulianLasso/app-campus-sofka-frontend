@@ -13,10 +13,12 @@ import { MatInputModule } from '@angular/material/input'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 // Components
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SecurityModule } from 'src/app/modules/security/security.module';
 
 @NgModule({
   declarations: [HeaderComponent, MenuComponent],
@@ -34,9 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatDatepickerModule,
     MatCardModule,
-    MatListModule
-
-
+    MatListModule,
+    SecurityModule,
+    MatDialogModule
   ],
   providers: [],
   exports: [HeaderComponent, MenuComponent]
