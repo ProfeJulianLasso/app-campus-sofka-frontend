@@ -18,6 +18,10 @@ const routes: Routes = [
     children: [
       { path: "course-list", component: CourseComponent },
       {
+        path: 'course-topics',
+        component: CourseTopicsComponent
+      },
+      {
         path: "course-content", component: ContentComponent,
         children: [
           {
@@ -32,10 +36,11 @@ const routes: Routes = [
     ]
   }
 
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CourseRoutingModule { }
+export class CourseRoutingModule {}

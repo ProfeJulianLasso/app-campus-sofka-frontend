@@ -9,9 +9,12 @@ import { CourseTopics } from '../../interfaces/ICourseTopics';
 })
 export class CourseTopicsComponent implements OnInit {
   listCoursesTopics: CourseTopics[] = [];
+  
   gridColumns = 3;
   name: string;
+  styles_content: boolean;
   constructor(private courseTopicsService: CourseTopicsService) {
+    this.styles_content = true;
     this.name = 'Temas 📚';
   }
 
@@ -21,7 +24,7 @@ export class CourseTopicsComponent implements OnInit {
 
   /**
    * [
-   *  Metodo courseAll(), se optiene todos los cursos
+   *  Metodo courseTopicAll(), se optiene todos los cursos
    *  dashboardService.getCourses(), suscribe la data y la guardo
    *  this.listCourses para mostrarla en la vista
    * ]
@@ -41,5 +44,9 @@ export class CourseTopicsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  CourseTopicsThema(){
+
   }
 }

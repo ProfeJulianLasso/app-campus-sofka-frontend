@@ -1,0 +1,86 @@
+[{
+        "id": "3d68b076-602d-4cc1-b621-2bdfb442b1c6",
+        "completed": false,
+        "badge": "direción de la imagen",
+        "topics": [
+            "88df7dbc-bad0-4ab3-8898-4034dc349104",
+            "32974f1b-59ea-40c8-b505-a64639f73608"
+        ]
+    },
+
+    {
+        "id": "2dc007cf-cd34-4f67-80e4-c40814f5d35f",
+        "completed": false,
+        "badge": "direción de la imagen curso 2",
+        "topics": [
+            "fa06cd43-09da-40cc-a9a3-cdd117e18fcb",
+            "f5a94e88-d869-4e5a-9c9a-b3e50d849b40",
+            "8aa0d0a2-66f9-47a6-8abf-cd6ed0c6991c"
+        ]
+    },
+
+    {
+        "id": "1e8965cc-a2fe-43cb-b60d-84b8b6179742",
+        "completed": false,
+        "badge": "direción de la imagen",
+        "topics": [
+            "a470c054-d478-461e-a5c1-1ad0beed4c65",
+            "f6c24e54-76bc-4c76-888d-b011fd282763"
+        ]
+    }
+]
+
+--Topics level 1
+    [{
+        "id": "88df7dbc-bad0-4ab3-8898-4034dc3491044",
+        "name": "Tema 1 nivel 1",
+        "icon": "Direccion del icono",
+        "actived": true "completed": false,
+        "previous": []
+    }, {
+        "id": "32974f1b-59ea-40c8-b505-a64639f73608",
+        "name": "Tema 2 nivel 1",
+        "icon": "Direccion del icono",
+        "actived": true "completed": false,
+        "previous": []
+    }]
+
+--Topics level 2
+    [
+
+        {
+            "id": "fa06cd43-09da-40cc-a9a3-cdd117e18fcb",
+            "name": "Tema 1 nivel 2",
+            "icon": "Direccion del icono",
+            "actived": false "completed": false,
+            "previous": ["88df7dbc-bad0-4ab3-8898-4034dc3491044", "32974f1b-59ea-40c8-b505-a64639f73608"]
+        }, {
+            "id": "f5a94e88-d869-4e5a-9c9a-b3e50d849b40",
+            "name": "Tema 2 nivel 1",
+            "icon": "Direccion del icono",
+            "actived": false "completed": false,
+            "previous": ["88df7dbc-bad0-4ab3-8898-4034dc3491044"]
+        }, {
+            "id": "8aa0d0a2-66f9-47a6-8abf-cd6ed0c6991c",
+            "name": "Tema 2 nivel 1",
+            "icon": "Direccion del icono",
+            "actived": false "completed": false,
+            "previous": ["32974f1b-59ea-40c8-b505-a64639f73608"]
+        }
+    ]
+
+
+--Topics level 3
+    [{
+        "id": "a470c054-d478-461e-a5c1-1ad0beed4c65",
+        "name": "Tema 1 nivel 3",
+        "icon": "Direccion del icono",
+        "actived": false "completed": false,
+        "previous": ["f5a94e88-d869-4e5a-9c9a-b3e50d849b40"]
+    }, {
+        "id": "f6c24e54-76bc-4c76-888d-b011fd282763",
+        "name": "Tema 2 nivel 3",
+        "icon": "Direccion del icono",
+        "actived": false "completed": false,
+        "previous": ["f5a94e88-d869-4e5a-9c9a-b3e50d849b40"]
+    }]
