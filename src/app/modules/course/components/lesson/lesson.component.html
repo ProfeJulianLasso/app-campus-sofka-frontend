@@ -1,7 +1,12 @@
-<div class="container">
-  <ngx-doc-viewer
-    [url]="doc"
-    viewer="google"
-    style="width: 100%; height: 82vh"
-  ></ngx-doc-viewer>
+<div *ngFor="let lesson of lessons; let i = index">
+  <div class="container" *ngIf="i === position">
+    <div>
+      <ngx-doc-viewer
+        [url]="lesson.content"
+        viewer="google"
+        style="width: 100%; height: 70vh"
+      ></ngx-doc-viewer>
+    </div>
+    <button class="btn-siguiente" (click)="next()">Siguiente</button>
+  </div>
 </div>

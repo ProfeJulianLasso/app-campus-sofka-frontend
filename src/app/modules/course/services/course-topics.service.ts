@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Question } from '../interfaces/IQuestion';
 import { Step } from '../interfaces/IStep';
+import { Lesson } from '../interfaces/ILesson';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,10 @@ export class CourseTopicsService {
 
   postQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(`${this.ulrsave}`, question, this.httpOptions);
+  }
+
+  getLesson(step: string, id: string | null): Observable<Lesson[]> {
+    return this.http.get<Lesson[]>(`${this.url}/${step}/${id}`)
+
   }
 }

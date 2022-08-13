@@ -9,12 +9,12 @@
     <div class="list-task">
       <mat-list role="list">
         <mat-list-item role="listitem" *ngFor="let date of calendar">
-          <div class="activities">
+          <div>
             <p class="title">
-              Titulo : <span class="subtitle">{{ date.title }}</span>
-            </p>
-            <p class="title">
-              url : <span class="subtitle">{{ date.url }}</span>
+              Titulo : <span class="subtitle">{{ date.title }}</span
+              ><br />
+              url :
+              <span class="subtitle">{{ date.url }}</span>
             </p>
           </div>
         </mat-list-item>
